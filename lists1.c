@@ -102,7 +102,7 @@ list_t *node_starts_with(list_t *node, char *prefix, char c)
 
 /**
  * get_node_index - gets the index of a node
- * @head: pointer to list head
+ * @head: pointer to list had
  * @node: pointer to the node
  *
  * Return: index of node or -1

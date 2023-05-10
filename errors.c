@@ -43,7 +43,7 @@ int _eputchar(char c)
 
 /**
  * _putfd - writes the character c to given fd
- * @c: The character to print
+ * @c: The character to prin
  * @fd: The filedescriptor to write to
  *
  * Return: On success 1.

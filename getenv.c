@@ -54,7 +54,7 @@ int _unsetenv(info_t *info, char *var)
  *             or modify an existing one
  * @info: Structure containing potential arguments. Used to maintain
  *        constant function prototype.
- * @var: the string env var property
+ * @var: the string env var roperty
  * @value: the string env var value
  *  Return: Always 0
  */
