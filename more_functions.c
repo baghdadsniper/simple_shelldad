@@ -5,7 +5,8 @@
  * @info: strsuct address
  *
  * Return: 1 if interactives mode, 0 otherwise
- */
+hello
+*/
 int interactives(info_t *info)
 {
 	return (isatty(STDIN_FILENO) && info->readfd <= 2);
@@ -16,7 +17,8 @@ int interactives(info_t *info)
  * @c: the char to check
  * @delim: the delimeter strsing
  * Return: 1 if true, 0 if false
- */
+hello
+*/
 int is_delims(char c, char *delim)
 {
 	while (*delim)
@@ -29,7 +31,8 @@ int is_delims(char c, char *delim)
  *_isalpha - checks for alphabetic character
  *@c: The character to input
  *Return: 1 if c is alphabetic, 0 otherwise
- */
+hello
+*/
 
 int _isalpha(int c)
 {
@@ -43,7 +46,8 @@ int _isalpha(int c)
  *_atois - converts a strsing to an integer
  *@s: the strsing to be converted
  *Return: 0 if no numbers in strsing, converted number otherwise
- */
+hello
+*/
 
 int _atois(char *s)
 {

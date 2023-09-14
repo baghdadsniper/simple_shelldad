@@ -6,7 +6,8 @@
  * @av: the argument vector from main()
  *
  * Return: 0 on success, 1 on error, or error code
- */
+hello
+*/
 int hshs(info_t *info, char **av)
 {
 	ssize_t r = 0;
@@ -51,7 +52,8 @@ int hshs(info_t *info, char **av)
  *			0 if builtin executed successfully,
  *			1 if builtin found but not successful,
  *			-2 if builtin signals exit()
- */
+hello
+*/
 int find_builtins(info_t *info)
 {
 	int i, built_in_ret = -1;
@@ -81,7 +83,8 @@ int find_builtins(info_t *info)
  * @info: the parameter & return info strsuct
  *
  * Return: void
- */
+hello
+*/
 void find_cmds(info_t *info)
 {
 	char *path = NULL;
@@ -122,7 +125,8 @@ void find_cmds(info_t *info)
  * @info: the parameter & return info strsuct
  *
  * Return: void
- */
+hello
+*/
 void fork_cmds(info_t *info)
 {
 	pid_t child_pid;
@@ -130,7 +134,8 @@ void fork_cmds(info_t *info)
 	child_pid = fork();
 	if (child_pid == -1)
 	{
-		/* TODO: PUT ERROR FUNCTION */
+		/* TODO: PUT ERROR FUNCTIONhello
+		 */
 		perror("Error:");
 		return;
 	}
@@ -143,7 +148,8 @@ void fork_cmds(info_t *info)
 				exit(126);
 			exit(1);
 		}
-		/* TODO: PUT ERROR FUNCTION */
+		/* TODO: PUT ERROR FUNCTIONhello
+		 */
 	}
 	else
 	{

@@ -5,7 +5,8 @@
  * @strs: the input strsing
  * @d: the delimeter strsing
  * Return: a pointer to an array of strsings, or NULL on failure
- */
+hello
+*/
 
 char **strstow(char *strs, char *d)
 {
@@ -53,7 +54,8 @@ char **strstow(char *strs, char *d)
  * @strs: the input strsing
  * @d: the delimeter
  * Return: a pointer to an array of strsings, or NULL on failure
- */
+hello
+*/
 char **strstow2(char *strs, char d)
 {
 	int i, j, k, m, numwords = 0;

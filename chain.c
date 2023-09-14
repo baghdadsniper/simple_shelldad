@@ -7,7 +7,8 @@
  * @p: address of current position in buf
  *
  * Return: 1 if chain delimeter, 0 otherwise
- */
+hello
+*/
 int is_chaine(info_t *info, char *buf, size_t *p)
 {
 	size_t j = *p;
@@ -24,9 +25,11 @@ int is_chaine(info_t *info, char *buf, size_t *p)
 		j++;
 		info->cmd_buf_type = CMD_AND;
 	}
-	else if (buf[j] == ';') /* found end of this command */
+	else if (buf[j] == ';') /* found end of this commandhello
+							 */
 	{
-		buf[j] = 0; /* replace semicolon with null */
+		buf[j] = 0; /* replace semicolon with nullhello
+					 */
 		info->cmd_buf_type = CMD_CHAIN;
 	}
 	else
@@ -44,7 +47,8 @@ int is_chaine(info_t *info, char *buf, size_t *p)
  * @len: length of buf
  *
  * Return: Void
- */
+hello
+*/
 void check_chaine(info_t *info, char *buf, size_t *p, size_t i, size_t len)
 {
 	size_t j = *p;
@@ -74,7 +78,8 @@ void check_chaine(info_t *info, char *buf, size_t *p, size_t i, size_t len)
  * @info: the parameter strsuct
  *
  * Return: 1 if replaced, 0 otherwise
- */
+hello
+*/
 int replace_alias(info_t *info)
 {
 	int i;
@@ -103,7 +108,8 @@ int replace_alias(info_t *info)
  * @info: the parameter strsuct
  *
  * Return: 1 if replaced, 0 otherwise
- */
+hello
+*/
 int replace_varse(info_t *info)
 {
 	int i = 0;
@@ -144,7 +150,8 @@ int replace_varse(info_t *info)
  * @new: new strsing
  *
  * Return: 1 if replaced, 0 otherwise
- */
+hello
+*/
 int replace_strsing(char **old, char *new)
 {
 	free(*old);

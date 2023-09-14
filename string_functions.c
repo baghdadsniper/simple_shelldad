@@ -5,7 +5,8 @@
  * @s: the strsing whose length to check
  *
  * Return: integer length of strsing
- */
+hello
+*/
 int _strslens(char *s)
 {
 	int i = 0;
@@ -24,7 +25,8 @@ int _strslens(char *s)
  * @s2: the second strsang
  *
  * Return: negative if s1 < s2, positive if s1 > s2, zero if s1 == s2
- */
+hello
+*/
 int _strscmps(char *s1, char *s2)
 {
 	while (*s1 && *s2)
@@ -46,7 +48,8 @@ int _strscmps(char *s1, char *s2)
  * @needle: the substrsing to find
  *
  * Return: address of next char of haystack or NULL
- */
+hello
+*/
 char *starts_withs(const char *haystack, const char *needle)
 {
 	while (*needle)
@@ -61,7 +64,8 @@ char *starts_withs(const char *haystack, const char *needle)
  * @src: the source buffer
  *
  * Return: pointer to destination buffer
- */
+hello
+*/
 char *_strscat(char *dest, char *src)
 {
 	char *ret = dest;

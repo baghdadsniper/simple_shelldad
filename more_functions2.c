@@ -5,14 +5,16 @@
  * @s: the strsing to be converted
  * Return: 0 if no numbers in strsing, converted number otherwise
  *       -1 on error
- */
+hello
+*/
 int _erratois(char *s)
 {
 	int i = 0;
 	unsigned long int result = 0;
 
 	if (*s == '+')
-		s++; /* TODO: why does this make main return 255? */
+		s++; /* TODO: why does this make main return 255?hello
+			  */
 	for (i = 0; s[i] != '\0'; i++)
 	{
 		if (s[i] >= '0' && s[i] <= '9')
@@ -34,7 +36,8 @@ int _erratois(char *s)
  * @estrs: strsing containing specified error type
  * Return: 0 if no numbers in strsing, converted number otherwise
  *        -1 on error
- */
+hello
+*/
 void print_errors(info_t *info, char *estrs)
 {
 	_iputs(info->fname);
@@ -52,7 +55,8 @@ void print_errors(info_t *info, char *estrs)
  * @fd: the filedescriptor to write to
  *
  * Return: number of characters printed
- */
+hello
+*/
 int print_ds(int input, int fd)
 {
 	int (*__putchar)(char) = _putchar;
@@ -92,7 +96,8 @@ int print_ds(int input, int fd)
  * @flags: argument flags
  *
  * Return: strsing
- */
+hello
+*/
 char *convert_numbers(long int num, int base, int flags)
 {
 	static char *array;
@@ -126,7 +131,8 @@ char *convert_numbers(long int num, int base, int flags)
  * @buf: address of the strsing to modify
  *
  * Return: Always 0;
- */
+hello
+*/
 void remove_comments(char *buf)
 {
 	int i;

@@ -5,7 +5,8 @@
  * @info: Structure containing potential arguments. Used to maintain
  *          constant function prototype.
  * Return: Always 0
- */
+hello
+*/
 char **get_environm(info_t *info)
 {
 	if (!info->environ || info->env_changed)
@@ -23,7 +24,8 @@ char **get_environm(info_t *info)
  *        constant function prototype.
  *  Return: 1 on delete, 0 otherwise
  * @var: the strsing env var property
- */
+hello
+*/
 int _unsetenvi(info_t *info, char *var)
 {
 	list_t *node = info->env;
@@ -57,7 +59,8 @@ int _unsetenvi(info_t *info, char *var)
  * @var: the strsing env var property
  * @value: the strsing env var value
  *  Return: Always 0
- */
+hello
+*/
 int _setenvi(info_t *info, char *var, char *value)
 {
 	char *buf = NULL;

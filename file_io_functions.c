@@ -5,7 +5,8 @@
  * @info: parameter strsuct
  *
  * Return: allocated strsing containg history file
- */
+hello
+*/
 
 char *get_history_file(info_t *info)
 {
@@ -29,7 +30,8 @@ char *get_history_file(info_t *info)
  * @info: the parameter strsuct
  *
  * Return: 1 on success, else -1
- */
+hello
+*/
 int write_history(info_t *info)
 {
 	ssize_t fd;
@@ -58,7 +60,8 @@ int write_history(info_t *info)
  * @info: the parameter strsuct
  *
  * Return: histcount on success, 0 otherwise
- */
+hello
+*/
 int read_history(info_t *info)
 {
 	int i, last = 0, linecount = 0;
@@ -109,7 +112,8 @@ int read_history(info_t *info)
  * @linecount: the history linecount, histcount
  *
  * Return: Always 0
- */
+hello
+*/
 int build_history_list(info_t *info, char *buf, int linecount)
 {
 	list_t *node = NULL;
@@ -128,7 +132,8 @@ int build_history_list(info_t *info, char *buf, int linecount)
  * @info: Structure containing potential arguments. Used to maintain
  *
  * Return: the new histcount
- */
+hello
+*/
 int renumber_history(info_t *info)
 {
 	list_t *node = info->history;

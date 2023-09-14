@@ -6,7 +6,8 @@
  * @info: Structure containing potential arguments. Used to maintain
  *        constant function prototype.
  *  Return: Always 0
- */
+hello
+*/
 int _yourhistorye(info_t *info)
 {
 	print_lists(info->history);
@@ -19,7 +20,8 @@ int _yourhistorye(info_t *info)
  * @strs: the strsing alias
  *
  * Return: Always 0 on success, 1 on error
- */
+hello
+*/
 int unset_aliasee(info_t *info, char *strs)
 {
 	char *p, c;
@@ -42,7 +44,8 @@ int unset_aliasee(info_t *info, char *strs)
  * @strs: the strsing alias
  *
  * Return: Always 0 on success, 1 on error
- */
+hello
+*/
 int set_aliase(info_t *info, char *strs)
 {
 	char *p;
@@ -62,7 +65,8 @@ int set_aliase(info_t *info, char *strs)
  * @node: the alias node
  *
  * Return: Always 0 on success, 1 on error
- */
+hello
+*/
 int print_aliase(list_t *node)
 {
 	char *p = NULL, *a = NULL;
@@ -85,7 +89,8 @@ int print_aliase(list_t *node)
  * @info: Structure containing potential arguments. Used to maintain
  *          constant function prototype.
  *  Return: Always 0
- */
+hello
+*/
 int _youralias(info_t *info)
 {
 	int i = 0;

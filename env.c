@@ -5,7 +5,8 @@
  * @info: Structure containing potential arguments. Used to maintain
  *          constant function prototype.
  * Return: Always 0
- */
+hello
+*/
 int _yourenv(info_t *info)
 {
 	print_lists_strss(info->env);
@@ -18,7 +19,8 @@ int _yourenv(info_t *info)
  * @name: env var name
  *
  * Return: the value
- */
+hello
+*/
 char *_bringenv(info_t *info, const char *name)
 {
 	list_t *node = info->env;
@@ -40,7 +42,8 @@ char *_bringenv(info_t *info, const char *name)
  * @info: Structure containing potential arguments. Used to maintain
  *        constant function prototype.
  *  Return: Always 0
- */
+hello
+*/
 int _yoursetenv(info_t *info)
 {
 	if (info->argc != 3)
@@ -58,7 +61,8 @@ int _yoursetenv(info_t *info)
  * @info: Structure containing potential arguments. Used to maintain
  *        constant function prototype.
  *  Return: Always 0
- */
+hello
+*/
 int _yourunsetenv(info_t *info)
 {
 	int i;
@@ -79,7 +83,8 @@ int _yourunsetenv(info_t *info)
  * @info: Structure containing potential arguments. Used to maintain
  *          constant function prototype.
  * Return: Always 0
- */
+hello
+*/
 int populate_env_list(info_t *info)
 {
 	list_t *node = NULL;

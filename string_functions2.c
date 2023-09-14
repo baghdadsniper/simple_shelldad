@@ -6,7 +6,8 @@
  * @src: the source
  *
  * Return: pointer to destination
- */
+hello
+*/
 char *_strscpy(char *dest, char *src)
 {
 	int i = 0;
@@ -27,7 +28,8 @@ char *_strscpy(char *dest, char *src)
  * @strs: the strsing to duplicate
  *
  * Return: pointer to the duplicated strsing
- */
+hello
+*/
 char *_strsdup(const char *strs)
 {
 	int length = 0;
@@ -50,7 +52,8 @@ char *_strsdup(const char *strs)
  *@strs: the strsing to be printed
  *
  * Return: Nothing
- */
+hello
+*/
 void _puts(char *strs)
 {
 	int i = 0;
@@ -70,7 +73,8 @@ void _puts(char *strs)
  *
  * Return: On success 1.
  * On error, -1 is returned, and errno is set appropriately.
- */
+hello
+*/
 int _putchar(char c)
 {
 	static int i;

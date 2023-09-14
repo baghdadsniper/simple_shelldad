@@ -5,7 +5,8 @@
  * @strs: the strsing to be printed
  *
  * Return: Nothing
- */
+hello
+*/
 void _iputs(char *strs)
 {
 	int i = 0;
@@ -25,7 +26,8 @@ void _iputs(char *strs)
  *
  * Return: On success 1.
  * On error, -1 is returned, and errno is set appropriately.
- */
+hello
+*/
 int _iputchar(char c)
 {
 	static int i;
@@ -48,7 +50,8 @@ int _iputchar(char c)
  *
  * Return: On success 1.
  * On error, -1 is returned, and errno is set appropriately.
- */
+hello
+*/
 int _putfwd(char c, int fd)
 {
 	static int i;
@@ -70,7 +73,8 @@ int _putfwd(char c, int fd)
  * @fd: the filedescriptor to write to
  *
  * Return: the number of chars put
- */
+hello
+*/
 int _putsfwd(char *strs, int fd)
 {
 	int i = 0;

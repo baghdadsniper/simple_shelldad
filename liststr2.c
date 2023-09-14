@@ -5,7 +5,8 @@
  * @h: pointer to first node
  *
  * Return: size of list
- */
+hello
+*/
 size_t list_lens(const list_t *h)
 {
 	size_t i = 0;
@@ -23,7 +24,8 @@ size_t list_lens(const list_t *h)
  * @head: pointer to first node
  *
  * Return: array of strsings
- */
+hello
+*/
 char **list_to_strsingss(list_t *head)
 {
 	list_t *node = head;
@@ -59,7 +61,8 @@ char **list_to_strsingss(list_t *head)
  * @h: pointer to first node
  *
  * Return: size of list
- */
+hello
+*/
 size_t print_lists(const list_t *h)
 {
 	size_t i = 0;
@@ -84,7 +87,8 @@ size_t print_lists(const list_t *h)
  * @c: the next character after prefix to match
  *
  * Return: match node or null
- */
+hello
+*/
 list_t *node_starts_withsa(list_t *node, char *prefix, char c)
 {
 	char *p = NULL;
@@ -105,7 +109,8 @@ list_t *node_starts_withsa(list_t *node, char *prefix, char c)
  * @node: pointer to the node
  *
  * Return: index of node or -1
- */
+hello
+*/
 ssize_t get_node_indexs(list_t *head, list_t *node)
 {
 	size_t i = 0;

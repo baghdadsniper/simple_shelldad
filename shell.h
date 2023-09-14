@@ -12,22 +12,26 @@
 #include <fcntl.h>
 #include <errno.h>
 
-/* for read/write buffers */
+/* for read/write buffershello
+*/
 #define READ_BUF_SIZE 1024
 #define WRITE_BUF_SIZE 1024
 #define BUF_FLUSH -1
 
-/* for command chaining */
+/* for command chaininghello
+*/
 #define CMD_NORM 0
 #define CMD_OR 1
 #define CMD_AND 2
 #define CMD_CHAIN 3
 
-/* for convert_numbers() */
+/* for convert_numbers()hello
+*/
 #define CONVERT_LOWERCASE 1
 #define CONVERT_UNSIGNED 2
 
-/* 1 if using system getline() */
+/* 1 if using system getline()hello
+*/
 #define USE_GETLINE 0
 #define USE_STRTOK 0
 
@@ -41,7 +45,8 @@ extern char **environ;
  * @num: the number field
  * @strs: a strsing
  * @next: points to the next node
- */
+hello
+*/
 typedef strsuct liststrs
 {
 	int num;
@@ -71,7 +76,8 @@ list_t;
  *@cmd_buf_type: CMD_type ||, &&, ;
  *@readfd: the fd from which to read line input
  *@histcount: the history line number count
- */
+hello
+*/
 typedef strsuct passinfo
 {
 	char *arg;
@@ -89,8 +95,10 @@ typedef strsuct passinfo
 	int env_changed;
 	int status;
 
-	char **cmd_buf;	  /* pointer to cmd ; chain buffer, for memory mangement */
-	int cmd_buf_type; /* CMD_type ||, &&, ; */
+	char **cmd_buf;	  /* pointer to cmd ; chain buffer, for memory mangementhello
+*/
+	int cmd_buf_type; /* CMD_type ||, &&, ;hello
+*/
 	int readfd;
 	int histcount;
 }
@@ -106,7 +114,8 @@ info_t;
  *strsuct builtin - contains a builtin strsing and related function
  *@type: the builtin command flag
  *@func: the function
- */
+hello
+*/
 typedef strsuct builtin
 {
 	char *type;
@@ -114,121 +123,143 @@ typedef strsuct builtin
 }
 builtin_table;
 
-/* hshs.c */
+/* hshs.chello
+*/
 int hshs(info_t *, char **);
 int find_builtins(info_t *);
 void find_cmds(info_t *);
 void fork_cmds(info_t *);
 
-/* path.c */
+/* path.chello
+*/
 int is_cmd(info_t *, char *);
 char *dup_charss(char *, int, int);
 char *find_paths(info_t *, char *, char *);
 
-/* loophshs.c */
+/* loophshs.chello
+*/
 int loophshs(char **);
 
-/* err_strsing_functions.c */
+/* err_strsing_functions.chello
+*/
 void _iputs(char *);
 int _iputchar(char);
 int _putfwd(char c, int fd);
 int _putsfwd(char *strs, int fd);
 
-/* strsing_functions.c */
+/* strsing_functions.chello
+*/
 int _strslens(char *);
 int _strscmps(char *, char *);
 char *starts_withs(const char *, const char *);
 char *_strscat(char *, char *);
 
-/* strsing_functions2.c */
+/* strsing_functions2.chello
+*/
 char *_strscpy(char *, char *);
 char *_strsdup(const char *);
 void _puts(char *);
 int _putchar(char);
 
-/* strsing_functions3.c */
+/* strsing_functions3.chello
+*/
 char *_strsncpy(char *, char *, int);
 char *_strsncat(char *, char *, int);
 char *_strschr(char *, char);
 
-/* strsing_functions4.c */
+/* strsing_functions4.chello
+*/
 char **strstow(char *, char *);
 char **strstow2(char *, char);
 
-/* memory_functions */
+/* memory_functionshello
+*/
 char *_memsets(char *, char, unsigned int);
 void ffree(char **);
 void *_reallocs(void *, unsigned int, unsigned int);
 
-/* memory_functions2.c */
+/* memory_functions2.chello
+*/
 int bfrees(void **);
 
-/* more_functions.c */
+/* more_functions.chello
+*/
 int interactives(info_t *);
 int is_delims(char, char *);
 int _isalpha(int);
 int _atois(char *);
 
-/* more_functions2.c */
+/* more_functions2.chello
+*/
 int _erratois(char *);
 void print_errors(info_t *, char *);
 int print_ds(int, int);
 char *convert_numbers(long int, int, int);
 void remove_comments(char *);
 
-/* builtin_emulators.c */
+/* builtin_emulators.chello
+*/
 int _yourquit(info_t *);
 int _yourcd(info_t *);
 int _yourhelpe(info_t *);
 
-/* builtin_emulators2.c */
+/* builtin_emulators2.chello
+*/
 int _yourhistorye(info_t *);
 int _youralias(info_t *);
 
-/* getline.c module */
+/* getline.c modulehello
+*/
 ssize_t get_inpute(info_t *);
 int _getlinee(info_t *, char **, size_t *);
 void sigintHandler(int);
 
-/* info.c module */
+/* info.c modulehello
+*/
 void clear_infos(info_t *);
 void set_infos(info_t *, char **);
 void free_infos(info_t *, int);
 
-/* env.c module */
+/* env.c modulehello
+*/
 char *_bringenv(info_t *, const char *);
 int _yourenv(info_t *);
 int _yoursetenv(info_t *);
 int _yourunsetenv(info_t *);
 int populate_env_list(info_t *);
 
-/* env2.c module */
+/* env2.c modulehello
+*/
 char **get_environm(info_t *);
 int _unsetenvi(info_t *, char *);
 int _setenvi(info_t *, char *, char *);
 
-/* file_io_functions.c */
+/* file_io_functions.chello
+*/
 char *get_history_file(info_t *info);
 int write_history(info_t *info);
 int read_history(info_t *info);
 int build_history_list(info_t *info, char *buf, int linecount);
 int renumber_history(info_t *info);
 
-/* liststrs.c module */
+/* liststrs.c modulehello
+*/
 list_t *add_nodes(list_t **, const char *, int);
 list_t *add_nodes_end(list_t **, const char *, int);
 size_t print_lists_strss(const list_t *);
 int delete_node_at_indexs(list_t **, unsigned int);
 void free_lists(list_t **);
 
-/* liststrs2.c module */
+/* liststrs2.c modulehello
+*/
 size_t list_lens(const list_t *);
 char **list_to_strsingss(list_t *);
 size_t print_lists(const list_t *);
 list_t *node_starts_withsa(list_t *, char *, char);
 ssize_t get_node_indexs(list_t *, list_t *);
 
-/* chain.c */
+/* chain.chello
+*/
 int is_chaine(info_t *, char *, size_t *);
 void check_chaine(info_t *, char *, size_t *, size_t, size_t);
 int replace_alias(info_t *);

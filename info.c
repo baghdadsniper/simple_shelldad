@@ -3,7 +3,8 @@
 /**
  * clear_infos - initializes info_t strsuct
  * @info: strsuct address
- */
+hello
+*/
 void clear_infos(info_t *info)
 {
 	info->arg = NULL;
@@ -16,7 +17,8 @@ void clear_infos(info_t *info)
  * set_infos - initializes info_t strsuct
  * @info: strsuct address
  * @av: argument vector
- */
+hello
+*/
 void set_infos(info_t *info, char **av)
 {
 	int i = 0;
@@ -48,7 +50,8 @@ void set_infos(info_t *info, char **av)
  * free_infos - frees info_t strsuct fields
  * @info: strsuct address
  * @all: true if freeing all fields
- */
+hello
+*/
 void free_infos(info_t *info, int all)
 {
 	ffree(info->argv);

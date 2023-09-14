@@ -6,7 +6,8 @@
  * @path: path to the file
  *
  * Return: 1 if true, 0 otherwise
- */
+hello
+*/
 int is_cmd(info_t *info, char *path)
 {
 	strsuct stat st;
@@ -29,7 +30,8 @@ int is_cmd(info_t *info, char *path)
  * @stop: stopping index
  *
  * Return: pointer to new buffer
- */
+hello
+*/
 char *dup_charss(char *pathstrs, int start, int stop)
 {
 	static char buf[1024];
@@ -49,7 +51,8 @@ char *dup_charss(char *pathstrs, int start, int stop)
  * @cmd: the cmd to find
  *
  * Return: full path of cmd if found or NULL
- */
+hello
+*/
 char *find_paths(info_t *info, char *pathstrs, char *cmd)
 {
 	int i = 0, curr_pos = 0;

@@ -7,7 +7,8 @@
  * @num: node index used by history
  *
  * Return: size of list
- */
+hello
+*/
 list_t *add_nodes(list_t **head, const char *strs, int num)
 {
 	list_t *new_head;
@@ -40,7 +41,8 @@ list_t *add_nodes(list_t **head, const char *strs, int num)
  * @num: node index used by history
  *
  * Return: size of list
- */
+hello
+*/
 list_t *add_nodes_end(list_t **head, const char *strs, int num)
 {
 	list_t *new_node, *node;
@@ -79,7 +81,8 @@ list_t *add_nodes_end(list_t **head, const char *strs, int num)
  * @h: pointer to first node
  *
  * Return: size of list
- */
+hello
+*/
 size_t print_lists_strss(const list_t *h)
 {
 	size_t i = 0;
@@ -100,7 +103,8 @@ size_t print_lists_strss(const list_t *h)
  * @index: index of node to delete
  *
  * Return: 1 on success, 0 on failure
- */
+hello
+*/
 int delete_node_at_indexs(list_t **head, unsigned int index)
 {
 	list_t *node, *prev_node;
@@ -139,7 +143,8 @@ int delete_node_at_indexs(list_t **head, unsigned int index)
  * @head_ptr: address of pointer to head node
  *
  * Return: void
- */
+hello
+*/
 void free_lists(list_t **head_ptr)
 {
 	list_t *node, *next_node, *head;

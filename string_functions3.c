@@ -6,7 +6,8 @@
  *@src: the source strsing
  *@n: the amount of characters to be copied
  *Return: the concatenated strsing
- */
+hello
+*/
 char *_strsncpy(char *dest, char *src, int n)
 {
 	int i, j;
@@ -36,7 +37,8 @@ char *_strsncpy(char *dest, char *src, int n)
  *@src: the second strsing
  *@n: the amount of bytes to be maximally used
  *Return: the concatenated strsing
- */
+hello
+*/
 char *_strsncat(char *dest, char *src, int n)
 {
 	int i, j;
@@ -62,7 +64,8 @@ char *_strsncat(char *dest, char *src, int n)
  *@s: the strsing to be parsed
  *@c: the character to look for
  *Return: (s) a pointer to the memory area s
- */
+hello
+*/
 char *_strschr(char *s, char c)
 {
 	do {

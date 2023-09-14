@@ -5,7 +5,8 @@
  * @ptr: address of the pointer to free
  *
  * Return: 1 if freed, otherwise 0.
- */
+hello
+*/
 int bfrees(void **ptr)
 {
 	if (ptr && *ptr)
