@@ -1,13 +1,13 @@
 #include "shell.h"
 
 /**
- * _strcpy - copies a string
+ * _strscpy - copies a strsing
  * @dest: the destination
  * @src: the source
  *
  * Return: pointer to destination
  */
-char *_strcpy(char *dest, char *src)
+char *_strscpy(char *dest, char *src)
 {
 	int i = 0;
 
@@ -23,43 +23,43 @@ char *_strcpy(char *dest, char *src)
 }
 
 /**
- * _strdup - duplicates a string
- * @str: the string to duplicate
+ * _strsdup - duplicates a strsing
+ * @strs: the strsing to duplicate
  *
- * Return: pointer to the duplicated string
+ * Return: pointer to the duplicated strsing
  */
-char *_strdup(const char *str)
+char *_strsdup(const char *strs)
 {
 	int length = 0;
 	char *ret;
 
-	if (str == NULL)
+	if (strs == NULL)
 		return (NULL);
-	while (*str++)
+	while (*strs++)
 		length++;
 	ret = malloc(sizeof(char) * (length + 1));
 	if (!ret)
 		return (NULL);
 	for (length++; length--;)
-		ret[length] = *--str;
+		ret[length] = *--strs;
 	return (ret);
 }
 
 /**
- * _puts - print an input string
- * @str: the string to be printed
+ *_puts - prints an input strsing
+ *@strs: the strsing to be printed
  *
  * Return: Nothing
  */
-void _puts(char *str)
+void _puts(char *strs)
 {
 	int i = 0;
 
-	if (!str)
+	if (!strs)
 		return;
-	while (str[i] != '\0')
+	while (strs[i] != '\0')
 	{
-		_putchar(str[i]);
+		_putchar(strs[i]);
 		i++;
 	}
 }

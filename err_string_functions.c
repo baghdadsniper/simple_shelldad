@@ -1,32 +1,32 @@
 #include "shell.h"
 
 /**
- * _eputs - prints an input string
- * @str: the string to be printed
+ *_iputs - prints an input strsing
+ * @strs: the strsing to be printed
  *
  * Return: Nothing
  */
-void _eputs(char *str)
+void _iputs(char *strs)
 {
 	int i = 0;
 
-	if (!str)
+	if (!strs)
 		return;
-	while (str[i] != '\0')
+	while (strs[i] != '\0')
 	{
-		_eputchar(str[i]);
+		_iputchar(strs[i]);
 		i++;
 	}
 }
 
 /**
- * _eputchar - writes the character c to stderr
+ * _iputchar - writes the character c to stderr
  * @c: The character to print
  *
  * Return: On success 1.
  * On error, -1 is returned, and errno is set appropriately.
  */
-int _eputchar(char c)
+int _iputchar(char c)
 {
 	static int i;
 	static char buf[WRITE_BUF_SIZE];
@@ -42,14 +42,14 @@ int _eputchar(char c)
 }
 
 /**
- * _putfd - writes the character c to given fd
- * @c: The character to prin
+ * _putfwd - writes the character c to given fd
+ * @c: The character to print
  * @fd: The filedescriptor to write to
  *
  * Return: On success 1.
  * On error, -1 is returned, and errno is set appropriately.
  */
-int _putfd(char c, int fd)
+int _putfwd(char c, int fd)
 {
 	static int i;
 	static char buf[WRITE_BUF_SIZE];
@@ -65,21 +65,21 @@ int _putfd(char c, int fd)
 }
 
 /**
- * _putsfd - prints an input string
- * @str: the string to be printed
+ *_putsfwd - prints an input strsing
+ * @strs: the strsing to be printed
  * @fd: the filedescriptor to write to
  *
  * Return: the number of chars put
  */
-int _putsfd(char *str, int fd)
+int _putsfwd(char *strs, int fd)
 {
 	int i = 0;
 
-	if (!str)
+	if (!strs)
 		return (0);
-	while (*str)
+	while (*strs)
 	{
-		i += _putfd(*str++, fd);
+		i += _putfwd(*strs++, fd);
 	}
 	return (i);
 }
