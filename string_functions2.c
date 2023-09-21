@@ -1,14 +1,13 @@
 #include "shell.h"
 
 /**
- * _strscpy - copies a strsing
+ * _strcpy - copies a string
  * @dest: the destination
  * @src: the source
  *
  * Return: pointer to destination
-hello
-*/
-char *_strscpy(char *dest, char *src)
+ */
+char *_strcpy(char *dest, char *src)
 {
 	int i = 0;
 
@@ -24,45 +23,43 @@ char *_strscpy(char *dest, char *src)
 }
 
 /**
- * _strsdup - duplicates a strsing
- * @strs: the strsing to duplicate
+ * _strdup - duplicates a string
+ * @str: the string to duplicate
  *
- * Return: pointer to the duplicated strsing
-hello
-*/
-char *_strsdup(const char *strs)
+ * Return: pointer to the duplicated string
+ */
+char *_strdup(const char *str)
 {
 	int length = 0;
 	char *ret;
 
-	if (strs == NULL)
+	if (str == NULL)
 		return (NULL);
-	while (*strs++)
+	while (*str++)
 		length++;
 	ret = malloc(sizeof(char) * (length + 1));
 	if (!ret)
 		return (NULL);
 	for (length++; length--;)
-		ret[length] = *--strs;
+		ret[length] = *--str;
 	return (ret);
 }
 
 /**
- *_puts - prints an input strsing
- *@strs: the strsing to be printed
+ *_puts - prints an input string
+ *@str: the string to be printed
  *
  * Return: Nothing
-hello
-*/
-void _puts(char *strs)
+ */
+void _puts(char *str)
 {
 	int i = 0;
 
-	if (!strs)
+	if (!str)
 		return;
-	while (strs[i] != '\0')
+	while (str[i] != '\0')
 	{
-		_putchar(strs[i]);
+		_putchar(str[i]);
 		i++;
 	}
 }
@@ -73,8 +70,7 @@ void _puts(char *strs)
  *
  * Return: On success 1.
  * On error, -1 is returned, and errno is set appropriately.
-hello
-*/
+ */
 int _putchar(char c)
 {
 	static int i;

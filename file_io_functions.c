@@ -2,36 +2,34 @@
 
 /**
  * get_history_file - gets the history file
- * @info: parameter strsuct
+ * @info: parameter struct
  *
- * Return: allocated strsing containg history file
-hello
-*/
+ * Return: allocated string containg history file
+ */
 
 char *get_history_file(info_t *info)
 {
 	char *buf, *dir;
 
-	dir = _bringenv(info, "HOME=");
+	dir = _getenv(info, "HOME=");
 	if (!dir)
 		return (NULL);
-	buf = malloc(sizeof(char) * (_strslens(dir) + _strslens(HIST_FILE) + 2));
+	buf = malloc(sizeof(char) * (_strlen(dir) + _strlen(HIST_FILE) + 2));
 	if (!buf)
 		return (NULL);
 	buf[0] = 0;
-	_strscpy(buf, dir);
-	_strscat(buf, "/");
-	_strscat(buf, HIST_FILE);
+	_strcpy(buf, dir);
+	_strcat(buf, "/");
+	_strcat(buf, HIST_FILE);
 	return (buf);
 }
 
 /**
  * write_history - creates a file, or appends to an existing file
- * @info: the parameter strsuct
+ * @info: the parameter struct
  *
  * Return: 1 on success, else -1
-hello
-*/
+ */
 int write_history(info_t *info)
 {
 	ssize_t fd;
@@ -47,26 +45,25 @@ int write_history(info_t *info)
 		return (-1);
 	for (node = info->history; node; node = node->next)
 	{
-		_putsfwd(node->strs, fd);
-		_putfwd('\n', fd);
+		_putsfd(node->str, fd);
+		_putfd('\n', fd);
 	}
-	_putfwd(BUF_FLUSH, fd);
+	_putfd(BUF_FLUSH, fd);
 	close(fd);
 	return (1);
 }
 
 /**
  * read_history - reads history from file
- * @info: the parameter strsuct
+ * @info: the parameter struct
  *
  * Return: histcount on success, 0 otherwise
-hello
-*/
+ */
 int read_history(info_t *info)
 {
 	int i, last = 0, linecount = 0;
 	ssize_t fd, rdlen, fsize = 0;
-	strsuct stat st;
+	struct stat st;
 	char *buf = NULL, *filename = get_history_file(info);
 
 	if (!filename)
@@ -100,7 +97,7 @@ int read_history(info_t *info)
 	free(buf);
 	info->histcount = linecount;
 	while (info->histcount-- >= HIST_MAX)
-		delete_node_at_indexs(&(info->history), 0);
+		delete_node_at_index(&(info->history), 0);
 	renumber_history(info);
 	return (info->histcount);
 }
@@ -112,15 +109,14 @@ int read_history(info_t *info)
  * @linecount: the history linecount, histcount
  *
  * Return: Always 0
-hello
-*/
+ */
 int build_history_list(info_t *info, char *buf, int linecount)
 {
 	list_t *node = NULL;
 
 	if (info->history)
 		node = info->history;
-	add_nodes_end(&node, buf, linecount);
+	add_node_end(&node, buf, linecount);
 
 	if (!info->history)
 		info->history = node;
@@ -132,8 +128,7 @@ int build_history_list(info_t *info, char *buf, int linecount)
  * @info: Structure containing potential arguments. Used to maintain
  *
  * Return: the new histcount
-hello
-*/
+ */
 int renumber_history(info_t *info)
 {
 	list_t *node = info->history;

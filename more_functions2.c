@@ -1,21 +1,19 @@
 #include "shell.h"
 
 /**
- * _erratois - converts a strsing to an integer
- * @s: the strsing to be converted
- * Return: 0 if no numbers in strsing, converted number otherwise
+ * _erratoi - converts a string to an integer
+ * @s: the string to be converted
+ * Return: 0 if no numbers in string, converted number otherwise
  *       -1 on error
-hello
-*/
-int _erratois(char *s)
+ */
+int _erratoi(char *s)
 {
 	int i = 0;
 	unsigned long int result = 0;
 
 	if (*s == '+')
-		s++; /* TODO: why does this make main return 255?hello
-			  */
-	for (i = 0; s[i] != '\0'; i++)
+		s++;  /* TODO: why does this make main return 255? */
+	for (i = 0;  s[i] != '\0'; i++)
 	{
 		if (s[i] >= '0' && s[i] <= '9')
 		{
@@ -31,40 +29,38 @@ int _erratois(char *s)
 }
 
 /**
- * print_errors - prints an error message
- * @info: the parameter & return info strsuct
- * @estrs: strsing containing specified error type
- * Return: 0 if no numbers in strsing, converted number otherwise
+ * print_error - prints an error message
+ * @info: the parameter & return info struct
+ * @estr: string containing specified error type
+ * Return: 0 if no numbers in string, converted number otherwise
  *        -1 on error
-hello
-*/
-void print_errors(info_t *info, char *estrs)
+ */
+void print_error(info_t *info, char *estr)
 {
-	_iputs(info->fname);
-	_iputs(": ");
-	print_ds(info->line_count, STDERR_FILENO);
-	_iputs(": ");
-	_iputs(info->argv[0]);
-	_iputs(": ");
-	_iputs(estrs);
+	_eputs(info->fname);
+	_eputs(": ");
+	print_d(info->line_count, STDERR_FILENO);
+	_eputs(": ");
+	_eputs(info->argv[0]);
+	_eputs(": ");
+	_eputs(estr);
 }
 
 /**
- * print_ds - function prints a decimal (integer) number (base 10)
+ * print_d - function prints a decimal (integer) number (base 10)
  * @input: the input
  * @fd: the filedescriptor to write to
  *
  * Return: number of characters printed
-hello
-*/
-int print_ds(int input, int fd)
+ */
+int print_d(int input, int fd)
 {
 	int (*__putchar)(char) = _putchar;
 	int i, count = 0;
 	unsigned int _abs_, current;
 
 	if (fd == STDERR_FILENO)
-		__putchar = _iputchar;
+		__putchar = _eputchar;
 	if (input < 0)
 	{
 		_abs_ = -input;
@@ -90,15 +86,14 @@ int print_ds(int input, int fd)
 }
 
 /**
- * convert_numbers - converter function, a clone of itoa
+ * convert_number - converter function, a clone of itoa
  * @num: number
  * @base: base
  * @flags: argument flags
  *
- * Return: strsing
-hello
-*/
-char *convert_numbers(long int num, int base, int flags)
+ * Return: string
+ */
+char *convert_number(long int num, int base, int flags)
 {
 	static char *array;
 	static char buffer[50];
@@ -110,13 +105,13 @@ char *convert_numbers(long int num, int base, int flags)
 	{
 		n = -num;
 		sign = '-';
+
 	}
 	array = flags & CONVERT_LOWERCASE ? "0123456789abcdef" : "0123456789ABCDEF";
 	ptr = &buffer[49];
 	*ptr = '\0';
 
-	do
-	{
+	do	{
 		*--ptr = array[n % base];
 		n /= base;
 	} while (n != 0);
@@ -128,11 +123,10 @@ char *convert_numbers(long int num, int base, int flags)
 
 /**
  * remove_comments - function replaces first instance of '#' with '\0'
- * @buf: address of the strsing to modify
+ * @buf: address of the string to modify
  *
  * Return: Always 0;
-hello
-*/
+ */
 void remove_comments(char *buf)
 {
 	int i;
