@@ -57,11 +57,11 @@ int find_builtin2(info_t *info)
 	int i, built_in_ret = -1;
 	builtin_table builtintbl[] = {
 		{"exit", _myexit},
-		{"env2", _myenv2},
+		{"env", _myenv},
 		{"help", _myhelp2},
 		{"history2", _myhistory2},
-		{"setenv", _mysetenv2},
-		{"unsetenv", _myunsetenv2},
+		{"setenv", _mysetenv},
+		{"unsetenv", _myunsetenv},
 		{"cd", _mycd2},
 		{"alias2", _myalias2},
 		{NULL, NULL}};
@@ -99,7 +99,7 @@ void find_cmd2(info_t *info)
 	if (!k)
 		return;
 
-	path2 = find_path2(info, _getenv2(info, "path2="), info->argv2[0]);
+	path2 = find_path2(info, _getenv(info, "path2="), info->argv2[0]);
 	if (path2)
 	{
 		info->path2 = path2;
@@ -107,7 +107,7 @@ void find_cmd2(info_t *info)
 	}
 	else
 	{
-		if ((interactive2(info) || _getenv2(info, "path2=") || info->argv2[0][0] == '/') && is_cmd2(info, info->argv2[0]))
+		if ((interactive2(info) || _getenv(info, "path2=") || info->argv2[0][0] == '/') && is_cmd2(info, info->argv2[0]))
 			fork_cmd2(info);
 		else if (*(info->arg2) != '\n')
 		{

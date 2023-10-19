@@ -45,24 +45,24 @@ int _mycd2(info_t *info)
 		_puts2("TODO: >>getcwd failure emsg here<<\n");
 	if (!info->argv2[1])
 	{
-		dir = _getenv2(info, "HOME=");
+		dir = _getenv(info, "HOME=");
 		if (!dir)
 			chdir_ret2 = /* TODO: what should this be? */
-				chdir((dir = _getenv2(info, "PWD=")) ? dir : "/");
+				chdir((dir = _getenv(info, "PWD=")) ? dir : "/");
 		else
 			chdir_ret2 = chdir(dir);
 	}
 	else if (_strcmp2(info->argv2[1], "-") == 0)
 	{
-		if (!_getenv2(info, "OLDPWD="))
+		if (!_getenv(info, "OLDPWD="))
 		{
 			_puts2(s);
 			_putchar2('\n');
 			return (1);
 		}
-		_puts2(_getenv2(info, "OLDPWD=")), _putchar2('\n');
+		_puts2(_getenv(info, "OLDPWD=")), _putchar2('\n');
 		chdir_ret2 = /* TODO: what should this be? */
-			chdir((dir = _getenv2(info, "OLDPWD=")) ? dir : "/");
+			chdir((dir = _getenv(info, "OLDPWD=")) ? dir : "/");
 	}
 	else
 		chdir_ret2 = chdir(info->argv2[1]);
@@ -73,8 +73,8 @@ int _mycd2(info_t *info)
 	}
 	else
 	{
-		_setenv2(info, "OLDPWD", _getenv2(info, "PWD="));
-		_setenv2(info, "PWD", getcwd(buffer, 1024));
+		_setenv(info, "OLDPWD", _getenv(info, "PWD="));
+		_setenv(info, "PWD", getcwd(buffer, 1024));
 	}
 	return (0);
 }

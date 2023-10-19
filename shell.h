@@ -60,8 +60,8 @@ typedef struct liststr
  *@err_num2: the error code for exit()s
  *@linecount_flag2: if on count this line of input
  *@fname2: the program filename
- *@env2: linked list local copy of environ2
- *@environ2: custom modified copy of environ2 from LL env2
+ *@env: linked list local copy of environ2
+ *@environ2: custom modified copy of environ2 from LL env
  *@history2: the history2 node
  *@alias2: the alias2 node
  *@env_changed2: on if environ2 was changed
@@ -81,7 +81,7 @@ typedef struct passinfo
 	int err_num2;
 	int linecount_flag2;
 	char *fname2;
-	list_t *env2;
+	list_t *env;
 	list_t *history2;
 	list_t *alias2;
 	char **environ2;
@@ -192,17 +192,17 @@ void clear_info2(info_t *);
 void set_info2(info_t *, char **);
 void free_info2(info_t *, int);
 
-/* env2.c module */
-char *_getenv2(info_t *, const char *);
-int _myenv2(info_t *);
-int _mysetenv2(info_t *);
-int _myunsetenv2(info_t *);
+/* env.c module */
+char *_getenv(info_t *, const char *);
+int _myenv(info_t *);
+int _mysetenv(info_t *);
+int _myunsetenv(info_t *);
 int populate_env_list2(info_t *);
 
-/* env2.c module */
+/* env.c module */
 char **get_environ2(info_t *);
-int _unsetenv2(info_t *, char *);
-int _setenv2(info_t *, char *, char *);
+int _unsetenv(info_t *, char *);
+int _setenv(info_t *, char *, char *);
 
 /* file_io_functions.c */
 char *get_history_file2(info_t *info);

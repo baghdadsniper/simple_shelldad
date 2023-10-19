@@ -1,27 +1,27 @@
 #include "shell.h"
 
 /**
- * _myenv2 - prints the current environment
+ * _myenv - prints the current environment
  * @info: Structure containing potential arguments. Used to maintain
  *          constant function prototype.
  * Return: Always 0
  */
-int _myenv2(info_t *info)
+int _myenv(info_t *info)
 {
-	print_list_str2(info->env2);
+	print_list_str2(info->env);
 	return (0);
 }
 
 /**
- * _getenv2 - gets the value of an environ2 variable
+ * _getenv - gets the value of an environ2 variable
  * @info: Structure containing potential arguments. Used to maintain
- * @name: env2 var name
+ * @name: env var name
  *
  * Return: the value
  */
-char *_getenv2(info_t *info, const char *name)
+char *_getenv(info_t *info, const char *name)
 {
-	list_t *node = info->env2;
+	list_t *node = info->env;
 	char *p;
 
 	while (node)
@@ -35,31 +35,31 @@ char *_getenv2(info_t *info, const char *name)
 }
 
 /**
- * _mysetenv2 - Initialize a new environment variable,
+ * _mysetenv - Initialize a new environment variable,
  *             or modify an existing one
  * @info: Structure containing potential arguments. Used to maintain
  *        constant function prototype.
  *  Return: Always 0
  */
-int _mysetenv2(info_t *info)
+int _mysetenv(info_t *info)
 {
 	if (info->argc2 != 3)
 	{
 		_eputs2("Incorrect number of arguements\n");
 		return (1);
 	}
-	if (_setenv2(info, info->argv2[1], info->argv2[2]))
+	if (_setenv(info, info->argv2[1], info->argv2[2]))
 		return (0);
 	return (1);
 }
 
 /**
- * _myunsetenv2 - Remove an environment variable
+ * _myunsetenv - Remove an environment variable
  * @info: Structure containing potential arguments. Used to maintain
  *        constant function prototype.
  *  Return: Always 0
  */
-int _myunsetenv2(info_t *info)
+int _myunsetenv(info_t *info)
 {
 	int i;
 
@@ -69,13 +69,13 @@ int _myunsetenv2(info_t *info)
 		return (1);
 	}
 	for (i = 1; i <= info->argc2; i++)
-		_unsetenv2(info, info->argv2[i]);
+		_unsetenv(info, info->argv2[i]);
 
 	return (0);
 }
 
 /**
- * populate_env_list2 - populates env2 linked list
+ * populate_env_list2 - populates env linked list
  * @info: Structure containing potential arguments. Used to maintain
  *          constant function prototype.
  * Return: Always 0
@@ -87,6 +87,6 @@ int populate_env_list2(info_t *info)
 
 	for (i = 0; environ2[i]; i++)
 		add_node_end2(&node, environ2[i], 0);
-	info->env2 = node;
+	info->env = node;
 	return (0);
 }
