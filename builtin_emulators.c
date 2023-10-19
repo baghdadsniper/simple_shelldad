@@ -1,13 +1,13 @@
 #include "shell.h"
 
 /**
- * _myexit2 - exits the shell
+ * _myexit - exits the shell
  * @info: Structure containing potential arguments. Used to maintain
  *          constant function prototype.
  *  Return: exits with a given exit status2
  *         (0) if info.argv2[0] != "exit"
  */
-int _myexit2(info_t *info)
+int _myexit(info_t *info)
 {
 	int exitcheck2;
 

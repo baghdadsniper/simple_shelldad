@@ -174,7 +174,7 @@ char *convert_number2(long int, int, int);
 void remove_comments2(char *);
 
 /* builtin_emulators.c */
-int _myexit2(info_t *);
+int _myexit(info_t *);
 int _mycd2(info_t *);
 int _myhelp2(info_t *);
 

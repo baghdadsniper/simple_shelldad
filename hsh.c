@@ -56,7 +56,7 @@ int find_builtin2(info_t *info)
 {
 	int i, built_in_ret = -1;
 	builtin_table builtintbl[] = {
-		{"exit", _myexit2},
+		{"exit", _myexit},
 		{"env2", _myenv2},
 		{"help", _myhelp2},
 		{"history2", _myhistory2},
