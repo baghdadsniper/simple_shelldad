@@ -7,7 +7,7 @@
  *  Return: exits with a given exit status
  *         (0) if info.argv[0] != "exit"
  */
-int _myyexit(info_t *info)
+int _myexit(info_t *info)
 {
 	int exitcheck;
 
@@ -35,7 +35,7 @@ int _myyexit(info_t *info)
  *          constant function prototype.
  *  Return: Always 0
  */
-int _myycd(info_t *info)
+int _mycd(info_t *info)
 {
 	char *s, *dir, buffer[1024];
 	int chdir_ret;
@@ -85,7 +85,7 @@ int _myycd(info_t *info)
  *          constant function prototype.
  *  Return: Always 0
  */
-int _myshelp(info_t *info)
+int _myhelp(info_t *info)
 {
 	char **arg_array;
 

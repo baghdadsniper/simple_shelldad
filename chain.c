@@ -8,7 +8,7 @@
  *
  * Return: 1 if chain delimeter, 0 otherwise
  */
-int is_cchain(info_t *info, char *buf, size_t *p)
+int is_chain(info_t *info, char *buf, size_t *p)
 {
 	size_t j = *p;
 
@@ -45,7 +45,7 @@ int is_cchain(info_t *info, char *buf, size_t *p)
  *
  * Return: Void
  */
-void check_cchain(info_t *info, char *buf, size_t *p, size_t i, size_t len)
+void check_chain(info_t *info, char *buf, size_t *p, size_t i, size_t len)
 {
 	size_t j = *p;
 
@@ -75,7 +75,7 @@ void check_cchain(info_t *info, char *buf, size_t *p, size_t i, size_t len)
  *
  * Return: 1 if replaced, 0 otherwise
  */
-int replace_aalias(info_t *info)
+int replace_alias(info_t *info)
 {
 	int i;
 	list_t *node;
@@ -104,7 +104,7 @@ int replace_aalias(info_t *info)
  *
  * Return: 1 if replaced, 0 otherwise
  */
-int replace_vvars(info_t *info)
+int replace_vars(info_t *info)
 {
 	int i = 0;
 	list_t *node;
@@ -116,24 +116,24 @@ int replace_vvars(info_t *info)
 
 		if (!_strcmp(info->argv[i], "$?"))
 		{
-			replace_sstring(&(info->argv[i]),
+			replace_string(&(info->argv[i]),
 				_strdup(convert_number(info->status, 10, 0)));
 			continue;
 		}
 		if (!_strcmp(info->argv[i], "$$"))
 		{
-			replace_sstring(&(info->argv[i]),
+			replace_string(&(info->argv[i]),
 				_strdup(convert_number(getpid(), 10, 0)));
 			continue;
 		}
 		node = node_starts_with(info->env, &info->argv[i][1], '=');
 		if (node)
 		{
-			replace_sstring(&(info->argv[i]),
+			replace_string(&(info->argv[i]),
 				_strdup(_strchr(node->str, '=') + 1));
 			continue;
 		}
-		replace_sstring(&info->argv[i], _strdup(""));
+		replace_string(&info->argv[i], _strdup(""));
 
 	}
 	return (0);
@@ -146,7 +146,7 @@ int replace_vvars(info_t *info)
  *
  * Return: 1 if replaced, 0 otherwise
  */
-int replace_sstring(char **old, char *new)
+int replace_string(char **old, char *new)
 {
 	free(*old);
 	*old = new;

@@ -7,7 +7,7 @@
  *        constant function prototype.
  *  Return: Always 0
  */
-int _myghistory(info_t *info)
+int _myhistory(info_t *info)
 {
 	print_list(info->history);
 	return (0);
@@ -20,7 +20,7 @@ int _myghistory(info_t *info)
  *
  * Return: Always 0 on success, 1 on error
  */
-int unset_aalias(info_t *info, char *str)
+int unset_alias(info_t *info, char *str)
 {
 	char *p, c;
 	int ret;
@@ -43,7 +43,7 @@ int unset_aalias(info_t *info, char *str)
  *
  * Return: Always 0 on success, 1 on error
  */
-int set_aalias(info_t *info, char *str)
+int set_alias(info_t *info, char *str)
 {
 	char *p;
 
@@ -53,7 +53,7 @@ int set_aalias(info_t *info, char *str)
 	if (!*++p)
 		return (unset_alias(info, str));
 
-	unset_aalias(info, str);
+	unset_alias(info, str);
 	return (add_node_end(&(info->alias), str, 0) == NULL);
 }
 
@@ -63,7 +63,7 @@ int set_aalias(info_t *info, char *str)
  *
  * Return: Always 0 on success, 1 on error
  */
-int print_aalias(list_t *node)
+int print_alias(list_t *node)
 {
 	char *p = NULL, *a = NULL;
 
@@ -86,7 +86,7 @@ int print_aalias(list_t *node)
  *          constant function prototype.
  *  Return: Always 0
  */
-int _myyalias(info_t *info)
+int _myalias(info_t *info)
 {
 	int i = 0;
 	char *p = NULL;
@@ -97,7 +97,7 @@ int _myyalias(info_t *info)
 		node = info->alias;
 		while (node)
 		{
-			print_aalias(node);
+			print_alias(node);
 			node = node->next;
 		}
 		return (0);
@@ -106,9 +106,9 @@ int _myyalias(info_t *info)
 	{
 		p = _strchr(info->argv[i], '=');
 		if (p)
-			set_aalias(info, info->argv[i]);
+			set_alias(info, info->argv[i]);
 		else
-			print_aalias(node_starts_with(info->alias, info->argv[i], '='));
+			print_alias(node_starts_with(info->alias, info->argv[i], '='));
 	}
 
 	return (0);
