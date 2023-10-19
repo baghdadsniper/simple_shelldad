@@ -1,18 +1,18 @@
 #include "shell.h"
 
 /**
- * is_cmd2 - determines if a file is an executable command
+ * is_cmd - determines if a file is an executable command
  * @info: the info struct
- * @path2: path2 to the file
+ * @path: path to the file
  *
  * Return: 1 if true, 0 otherwise
  */
-int is_cmd2(info_t *info, char *path2)
+int is_cmd(info_t *info, char *path)
 {
 	struct stat st;
 
 	(void)info;
-	if (!path2 || stat(path2, &st))
+	if (!path || stat(path, &st))
 		return (0);
 
 	if (st.st_mode & S_IFREG)
@@ -23,14 +23,14 @@ int is_cmd2(info_t *info, char *path2)
 }
 
 /**
- * dup_chars2 - duplicates characters
- * @pathstr: the path2 string
+ * dup_chars - duplicates characters
+ * @pathstr: the PATH string
  * @start: starting index
  * @stop: stopping index
  *
  * Return: pointer to new buffer
  */
-char *dup_chars2(char *pathstr, int start, int stop)
+char *dup_chars(char *pathstr, int start, int stop)
 {
 	static char buf[1024];
 	int i = 0, k = 0;
@@ -43,39 +43,39 @@ char *dup_chars2(char *pathstr, int start, int stop)
 }
 
 /**
- * find_path2 - finds this cmd in the path2 string
+ * find_path - finds this cmd in the PATH string
  * @info: the info struct
- * @pathstr: the path2 string
+ * @pathstr: the PATH string
  * @cmd: the cmd to find
  *
- * Return: full path2 of cmd if found or NULL
+ * Return: full path of cmd if found or NULL
  */
-char *find_path2(info_t *info, char *pathstr, char *cmd)
+char *find_path(info_t *info, char *pathstr, char *cmd)
 {
 	int i = 0, curr_pos = 0;
-	char *path2;
+	char *path;
 
 	if (!pathstr)
 		return (NULL);
-	if ((_strlen2(cmd) > 2) && starts_with2(cmd, "./"))
+	if ((_strlen(cmd) > 2) && starts_with(cmd, "./"))
 	{
-		if (is_cmd2(info, cmd))
+		if (is_cmd(info, cmd))
 			return (cmd);
 	}
 	while (1)
 	{
 		if (!pathstr[i] || pathstr[i] == ':')
 		{
-			path2 = dup_chars2(pathstr, curr_pos, i);
-			if (!*path2)
-				_strcat2(path2, cmd);
+			path = dup_chars(pathstr, curr_pos, i);
+			if (!*path)
+				_strcat(path, cmd);
 			else
 			{
-				_strcat2(path2, "/");
-				_strcat2(path2, cmd);
+				_strcat(path, "/");
+				_strcat(path, cmd);
 			}
-			if (is_cmd2(info, path2))
-				return (path2);
+			if (is_cmd(info, path))
+				return (path);
 			if (!pathstr[i])
 				break;
 			curr_pos = i;

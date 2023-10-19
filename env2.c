@@ -1,20 +1,20 @@
 #include "shell.h"
 
 /**
- * get_environ2 - returns the string array copy of our environ2
+ * get_environ - returns the string array copy of our environ
  * @info: Structure containing potential arguments. Used to maintain
  *          constant function prototype.
  * Return: Always 0
  */
-char **get_environ2(info_t *info)
+char **get_environ(info_t *info)
 {
-	if (!info->environ2 || info->env_changed2)
+	if (!info->environ || info->env_changed)
 	{
-		info->environ2 = list_to_strings2(info->env);
-		info->env_changed2 = 0;
+		info->environ = list_to_strings(info->env);
+		info->env_changed = 0;
 	}
 
-	return (info->environ2);
+	return (info->environ);
 }
 
 /**
@@ -35,10 +35,10 @@ int _unsetenv(info_t *info, char *var)
 
 	while (node)
 	{
-		p = starts_with2(node->str, var);
+		p = starts_with(node->str, var);
 		if (p && *p == '=')
 		{
-			info->env_changed2 = delete_node_at_index2(&(info->env), i);
+			info->env_changed = delete_node_at_index(&(info->env), i);
 			i = 0;
 			node = info->env;
 			continue;
@@ -46,7 +46,7 @@ int _unsetenv(info_t *info, char *var)
 		node = node->next;
 		i++;
 	}
-	return (info->env_changed2);
+	return (info->env_changed);
 }
 
 /**
@@ -67,27 +67,27 @@ int _setenv(info_t *info, char *var, char *value)
 	if (!var || !value)
 		return (0);
 
-	buf = malloc(_strlen2(var) + _strlen2(value) + 2);
+	buf = malloc(_strlen(var) + _strlen(value) + 2);
 	if (!buf)
 		return (1);
-	_strcpy2(buf, var);
-	_strcat2(buf, "=");
-	_strcat2(buf, value);
+	_strcpy(buf, var);
+	_strcat(buf, "=");
+	_strcat(buf, value);
 	node = info->env;
 	while (node)
 	{
-		p = starts_with2(node->str, var);
+		p = starts_with(node->str, var);
 		if (p && *p == '=')
 		{
 			free(node->str);
 			node->str = buf;
-			info->env_changed2 = 1;
+			info->env_changed = 1;
 			return (0);
 		}
 		node = node->next;
 	}
-	add_node_end2(&(info->env), buf, 0);
+	add_node_end(&(info->env), buf, 0);
 	free(buf);
-	info->env_changed2 = 1;
+	info->env_changed = 1;
 	return (0);
 }
