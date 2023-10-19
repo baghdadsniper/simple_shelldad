@@ -18,24 +18,23 @@
 #define BUF_FLUSH -1
 
 /* for command chaining */
-#define CMD_NORM	0
-#define CMD_OR		1
-#define CMD_AND		2
-#define CMD_CHAIN	3
+#define CMD_NORM 0
+#define CMD_OR 1
+#define CMD_AND 2
+#define CMD_CHAIN 3
 
-/* for convert_number() */
-#define CONVERT_LOWERCASE	1
-#define CONVERT_UNSIGNED	2
+/* for convert_number23() */
+#define CONVERT_LOWERCASE 1
+#define CONVERT_UNSIGNED 2
 
 /* 1 if using system getline() */
 #define USE_GETLINE 0
 #define USE_STRTOK 0
 
-#define HIST_FILE	".simple_shell_history"
-#define HIST_MAX	4096
+#define HIST_FILE ".simple_shell_history"
+#define HIST_MAX 4096
 
 extern char **environ;
-
 
 /**
  * struct liststr - singly linked list
@@ -89,15 +88,17 @@ typedef struct passinfo
 	int env_changed;
 	int status;
 
-	char **cmd_buf; /* pointer to cmd ; chain buffer, for memory mangement */
+	char **cmd_buf;	  /* pointer to cmd ; chain buffer, for memory mangement */
 	int cmd_buf_type; /* CMD_type ||, &&, ; */
 	int readfd;
 	int histcount;
 } info_t;
 
-#define INFO_INIT \
-{NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
-	0, 0, 0}
+#define INFO_INIT                                                               \
+	{                                                                           \
+		NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
+			0, 0, 0                                                             \
+	}
 
 /**
  *struct builtin - contains a builtin string and related function
@@ -110,68 +111,67 @@ typedef struct builtin
 	int (*func)(info_t *);
 } builtin_table;
 
-
-/* hsh.c */
-int hsh(info_t *, char **);
-int find_builtin(info_t *);
-void find_cmd(info_t *);
-void fork_cmd(info_t *);
+/* hsh2.c */
+int hsh2(info_t *, char **);
+int find_builtin2(info_t *);
+void find_cmd2(info_t *);
+void fork_cmd2(info_t *);
 
 /* path.c */
-int is_cmd(info_t *, char *);
-char *dup_chars(char *, int, int);
-char *find_path(info_t *, char *, char *);
+int is_cmd3(info_t *, char *);
+char *dup_chars2(char *, int, int);
+char *find_path23(info_t *, char *, char *);
 
-/* loophsh.c */
-int loophsh(char **);
+/* loophsh2.c */
+int loophsh2(char **);
 
 /* err_string_functions.c */
-void _eputs(char *);
-int _eputchar(char);
-int _putfd(char c, int fd);
-int _putsfd(char *str, int fd);
+void _eputs2(char *);
+int _eputchar2(char);
+int _putfd2(char c, int fd);
+int _putsfd2(char *str, int fd);
 
 /* string_functions.c */
-int _strlen(char *);
-int _strcmp(char *, char *);
-char *starts_with(const char *, const char *);
-char *_strcat(char *, char *);
+int _strlen2(char *);
+int _strcmp2(char *, char *);
+char *starts_with4(const char *, const char *);
+char *_strcat3(char *, char *);
 
 /* string_functions2.c */
-char *_strcpy(char *, char *);
-char *_strdup(const char *);
-void _puts(char *);
-int _putchar(char);
+char *_strcpy3(char *, char *);
+char *_strdup34(const char *);
+void _puts432(char *);
+int _putchar4(char);
 
 /* string_functions3.c */
-char *_strncpy(char *, char *, int);
-char *_strncat(char *, char *, int);
-char *_strchr(char *, char);
+char *_strncpy3(char *, char *, int);
+char *_strncat4(char *, char *, int);
+char *_strchr42(char *, char);
 
 /* string_functions4.c */
-char **strtow(char *, char *);
-char **strtow2(char *, char);
+char **strtow4(char *, char *);
+char **strtow24(char *, char);
 
 /* memory_functions */
-char *_memset(char *, char, unsigned int);
-void ffree(char **);
-void *_realloc(void *, unsigned int, unsigned int);
+char *_memset44(char *, char, unsigned int);
+void ffree3(char **);
+void *_realloc3(void *, unsigned int, unsigned int);
 
 /* memory_functions2.c */
-int bfree(void **);
+int bfree4(void **);
 
 /* more_functions.c */
-int interactive(info_t *);
-int is_delim(char, char *);
-int _isalpha(int);
-int _atoi(char *);
+int interactive4(info_t *);
+int is_delim54(char, char *);
+int _isalpha3(int);
+int _atoi3(char *);
 
 /* more_functions2.c */
-int _erratoi(char *);
-void print_error(info_t *, char *);
-int print_d(int, int);
-char *convert_number(long int, int, int);
-void remove_comments(char *);
+int _erratoi3(char *);
+void print_error3(info_t *, char *);
+int print_d34(int, int);
+char *convert_number23(long int, int, int);
+void remove_comments2(char *);
 
 /* builtin_emulators.c */
 int _myexit(info_t *);
@@ -183,14 +183,14 @@ int _myhistory(info_t *);
 int _myalias(info_t *);
 
 /* getline.c module */
-ssize_t get_input(info_t *);
-int _getline(info_t *, char **, size_t *);
-void sigintHandler(int);
+ssize_t get_input2(info_t *);
+int _getline3(info_t *, char **, size_t *);
+void sigintHandler2(int);
 
 /* info.c module */
-void clear_info(info_t *);
-void set_info(info_t *, char **);
-void free_info(info_t *, int);
+void clear_info2(info_t *);
+void set_info23(info_t *, char **);
+void free_info22(info_t *, int);
 
 /* env.c module */
 char *_getenv(info_t *, const char *);
