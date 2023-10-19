@@ -4,28 +4,28 @@
  * _myexit2 - exits the shell
  * @info: Structure containing potential arguments. Used to maintain
  *          constant function prototype.
- *  Return: exits with a given exit status
- *         (0) if info.argv[0] != "exit"
+ *  Return: exits with a given exit status2
+ *         (0) if info.argv2[0] != "exit"
  */
 int _myexit2(info_t *info)
 {
 	int exitcheck2;
 
-	if (info->argv[1]) /* If there is an exit arguement */
+	if (info->argv2[1]) /* If there is an exit arguement */
 	{
-		exitcheck2 = _erratoi2(info->argv[1]);
+		exitcheck2 = _erratoi2(info->argv2[1]);
 		if (exitcheck2 == -1)
 		{
-			info->status = 2;
+			info->status2 = 2;
 			print_error2(info, "Illegal number: ");
-			_eputs2(info->argv[1]);
+			_eputs2(info->argv2[1]);
 			_eputchar2('\n');
 			return (1);
 		}
-		info->err_num = _erratoi2(info->argv[1]);
+		info->err_num2 = _erratoi2(info->argv2[1]);
 		return (-2);
 	}
-	info->err_num = -1;
+	info->err_num2 = -1;
 	return (-2);
 }
 
@@ -42,8 +42,8 @@ int _mycd2(info_t *info)
 
 	s = getcwd(buffer, 1024);
 	if (!s)
-		_puts("TODO: >>getcwd failure emsg here<<\n");
-	if (!info->argv[1])
+		_puts2("TODO: >>getcwd failure emsg here<<\n");
+	if (!info->argv2[1])
 	{
 		dir = _getenv2(info, "HOME=");
 		if (!dir)
@@ -52,24 +52,24 @@ int _mycd2(info_t *info)
 		else
 			chdir_ret2 = chdir(dir);
 	}
-	else if (_strcmp(info->argv[1], "-") == 0)
+	else if (_strcmp2(info->argv2[1], "-") == 0)
 	{
 		if (!_getenv2(info, "OLDPWD="))
 		{
-			_puts(s);
-			_putchar('\n');
+			_puts2(s);
+			_putchar2('\n');
 			return (1);
 		}
-		_puts(_getenv2(info, "OLDPWD=")), _putchar('\n');
+		_puts2(_getenv2(info, "OLDPWD=")), _putchar2('\n');
 		chdir_ret2 = /* TODO: what should this be? */
 			chdir((dir = _getenv2(info, "OLDPWD=")) ? dir : "/");
 	}
 	else
-		chdir_ret2 = chdir(info->argv[1]);
+		chdir_ret2 = chdir(info->argv2[1]);
 	if (chdir_ret2 == -1)
 	{
 		print_error2(info, "can't cd to ");
-		_eputs2(info->argv[1]), _eputchar2('\n');
+		_eputs2(info->argv2[1]), _eputchar2('\n');
 	}
 	else
 	{
@@ -89,9 +89,9 @@ int _myhelp2(info_t *info)
 {
 	char **arg_array;
 
-	arg_array = info->argv;
-	_puts("help call works. Function not yet implemented \n");
+	arg_array = info->argv2;
+	_puts2("help call works. Function not yet implemented \n");
 	if (0)
-		_puts(*arg_array); /* temp att_unused workaround */
+		_puts2(*arg_array); /* temp att_unused workaround */
 	return (0);
 }

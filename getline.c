@@ -15,7 +15,7 @@ ssize_t input_buf2(info_t *info, char **buf, size_t *len)
 
 	if (!*len) /* if nothing left in the buffer, fill it */
 	{
-		/*bfree2((void **)info->cmd_buf);*/
+		/*bfree2((void **)info->cmd_buf2);*/
 		free(*buf);
 		*buf = NULL;
 		signal(SIGINT, sigintHandler2);
@@ -31,13 +31,13 @@ ssize_t input_buf2(info_t *info, char **buf, size_t *len)
 				(*buf)[r - 1] = '\0'; /* remove trailing newline */
 				r--;
 			}
-			info->linecount_flag = 1;
+			info->linecount_flag2 = 1;
 			remove_comments2(*buf);
-			build_history_list2(info, *buf, info->histcount++);
-			/* if (_strchr(*buf, ';')) is this a command chain? */
+			build_history_list2(info, *buf, info->histcount2++);
+			/* if (_strchr2(*buf, ';')) is this a command chain? */
 			{
 				*len = r;
-				info->cmd_buf = buf;
+				info->cmd_buf2 = buf;
 			}
 		}
 	}
@@ -55,9 +55,9 @@ ssize_t get_input2(info_t *info)
 	static char *buf; /* the ';' command chain buffer */
 	static size_t i, j, len;
 	ssize_t r = 0;
-	char **buf_p = &(info->arg), *p;
+	char **buf_p = &(info->arg2), *p;
 
-	_putchar(BUF_FLUSH);
+	_putchar2(BUF_FLUSH);
 	r = input_buf2(info, &buf, &len);
 	if (r == -1) /* EOF */
 		return (-1);
@@ -78,11 +78,11 @@ ssize_t get_input2(info_t *info)
 		if (i >= len) /* reached end of buffer? */
 		{
 			i = len = 0; /* reset position and length */
-			info->cmd_buf_type = CMD_NORM;
+			info->cmd_buf_type2 = CMD_NORM;
 		}
 
-		*buf_p = p;			 /* pass back pointer to current command position */
-		return (_strlen(p)); /* return length of current command */
+		*buf_p = p;			  /* pass back pointer to current command position */
+		return (_strlen2(p)); /* return length of current command */
 	}
 
 	*buf_p = buf; /* else not a chain, pass back buffer from _getline2() */
@@ -103,7 +103,7 @@ ssize_t read_buf2(info_t *info, char *buf, size_t *i)
 
 	if (*i)
 		return (0);
-	r = read(info->readfd, buf, READ_BUF_SIZE);
+	r = read(info->readfd2, buf, READ_BUF_SIZE);
 	if (r >= 0)
 		*i = r;
 	return (r);
@@ -135,16 +135,16 @@ int _getline2(info_t *info, char **ptr, size_t *length)
 	if (r == -1 || (r == 0 && len == 0))
 		return (-1);
 
-	c = _strchr(buf + i, '\n');
+	c = _strchr2(buf + i, '\n');
 	k = c ? 1 + (unsigned int)(c - buf) : len;
 	new_p = _realloc2(p, s, s ? s + k : k + 1);
 	if (!new_p) /* MALLOC FAILURE! */
 		return (p ? free(p), -1 : -1);
 
 	if (s)
-		_strncat(new_p, buf + i, k - i);
+		_strncat2(new_p, buf + i, k - i);
 	else
-		_strncpy(new_p, buf + i, k - i + 1);
+		_strncpy2(new_p, buf + i, k - i + 1);
 
 	s += k - i;
 	i = k;
@@ -164,7 +164,7 @@ int _getline2(info_t *info, char **ptr, size_t *length)
  */
 void sigintHandler2(__attribute__((unused)) int sig_num)
 {
-	_puts("\n");
-	_puts("$ ");
-	_putchar(BUF_FLUSH);
+	_puts2("\n");
+	_puts2("$ ");
+	_putchar2(BUF_FLUSH);
 }

@@ -18,24 +18,23 @@
 #define BUF_FLUSH -1
 
 /* for command chaining */
-#define CMD_NORM	0
-#define CMD_OR		1
-#define CMD_AND		2
-#define CMD_CHAIN	3
+#define CMD_NORM 0
+#define CMD_OR 1
+#define CMD_AND 2
+#define CMD_CHAIN 3
 
 /* for convert_number2() */
-#define CONVERT_LOWERCASE	1
-#define CONVERT_UNSIGNED	2
+#define CONVERT_LOWERCASE 1
+#define CONVERT_UNSIGNED 2
 
 /* 1 if using system getline() */
 #define USE_GETLINE 0
 #define USE_STRTOK 0
 
-#define HIST_FILE	".simple_shell_history"
-#define HIST_MAX	4096
+#define HIST_FILE ".simple_shell_history"
+#define HIST_MAX 4096
 
-extern char **environ;
-
+extern char **environ2;
 
 /**
  * struct liststr - singly linked list
@@ -53,51 +52,53 @@ typedef struct liststr
 /**
  *struct passinfo - contains pseudo-arguements to pass into a function,
  *					allowing uniform prototype for function pointer struct
- *@arg: a string generated from getline containing arguements
- *@argv: an array of strings generated from arg
- *@path: a string path for the current command
- *@argc: the argument count
- *@line_count: the error count
- *@err_num: the error code for exit()s
- *@linecount_flag: if on count this line of input
- *@fname: the program filename
- *@env: linked list local copy of environ
- *@environ: custom modified copy of environ from LL env
- *@history: the history node
- *@alias: the alias node
- *@env_changed: on if environ was changed
- *@status: the return status of the last exec'd command
- *@cmd_buf: address of pointer to cmd_buf, on if chaining
- *@cmd_buf_type: CMD_type ||, &&, ;
- *@readfd: the fd from which to read line input
- *@histcount: the history line number count
+ *@arg2: a string generated from getline containing arguements
+ *@argv2: an array of strings generated from arg2
+ *@path2: a string path2 for the current command
+ *@argc2: the argument count
+ *@line_count2: the error count
+ *@err_num2: the error code for exit()s
+ *@linecount_flag2: if on count this line of input
+ *@fname2: the program filename
+ *@env2: linked list local copy of environ2
+ *@environ2: custom modified copy of environ2 from LL env2
+ *@history2: the history2 node
+ *@alias2: the alias2 node
+ *@env_changed2: on if environ2 was changed
+ *@status2: the return status2 of the last exec'd command
+ *@cmd_buf2: address of pointer to cmd_buf2, on if chaining
+ *@cmd_buf_type2: CMD_type ||, &&, ;
+ *@readfd2: the fd from which to read line input
+ *@histcount2: the history2 line number count
  */
 typedef struct passinfo
 {
-	char *arg;
-	char **argv;
-	char *path;
-	int argc;
-	unsigned int line_count;
-	int err_num;
-	int linecount_flag;
-	char *fname;
-	list_t *env;
-	list_t *history;
-	list_t *alias;
-	char **environ;
-	int env_changed;
-	int status;
+	char *arg2;
+	char **argv2;
+	char *path2;
+	int argc2;
+	unsigned int line_count2;
+	int err_num2;
+	int linecount_flag2;
+	char *fname2;
+	list_t *env2;
+	list_t *history2;
+	list_t *alias2;
+	char **environ2;
+	int env_changed2;
+	int status2;
 
-	char **cmd_buf; /* pointer to cmd ; chain buffer, for memory mangement */
-	int cmd_buf_type; /* CMD_type ||, &&, ; */
-	int readfd;
-	int histcount;
+	char **cmd_buf2;   /* pointer to cmd ; chain buffer, for memory mangement */
+	int cmd_buf_type2; /* CMD_type ||, &&, ; */
+	int readfd2;
+	int histcount2;
 } info_t;
 
-#define INFO_INIT \
-{NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
-	0, 0, 0}
+#define INFO_INIT                                                               \
+	{                                                                           \
+		NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
+			0, 0, 0                                                             \
+	}
 
 /**
  *struct builtin - contains a builtin string and related function
@@ -110,20 +111,19 @@ typedef struct builtin
 	int (*func)(info_t *);
 } builtin_table;
 
-
 /* hsh2.c */
 int hsh2(info_t *, char **);
 int find_builtin2(info_t *);
 void find_cmd2(info_t *);
 void fork_cmd2(info_t *);
 
-/* path.c */
+/* path2.c */
 int is_cmd2(info_t *, char *);
 char *dup_chars2(char *, int, int);
 char *find_path2(info_t *, char *, char *);
 
-/* loophsh.c */
-int loophsh(char **);
+/* loophsh2.c */
+int loophsh2(char **);
 
 /* err_string_functions.c */
 void _eputs2(char *);
@@ -132,24 +132,24 @@ int _putfd2(char c, int fd);
 int _putsfd2(char *str, int fd);
 
 /* string_functions.c */
-int _strlen(char *);
-int _strcmp(char *, char *);
-char *starts_with(const char *, const char *);
-char *_strcat(char *, char *);
+int _strlen2(char *);
+int _strcmp2(char *, char *);
+char *starts_with2(const char *, const char *);
+char *_strcat2(char *, char *);
 
 /* string_functions2.c */
-char *_strcpy(char *, char *);
-char *_strdup(const char *);
-void _puts(char *);
-int _putchar(char);
+char *_strcpy2(char *, char *);
+char *_strdup2(const char *);
+void _puts2(char *);
+int _putchar2(char);
 
 /* string_functions3.c */
-char *_strncpy(char *, char *, int);
-char *_strncat(char *, char *, int);
-char *_strchr(char *, char);
+char *_strncpy2(char *, char *, int);
+char *_strncat2(char *, char *, int);
+char *_strchr2(char *, char);
 
 /* string_functions4.c */
-char **strtow(char *, char *);
+char **strtow2(char *, char *);
 char **strtow2(char *, char);
 
 /* memory_functions */
@@ -192,7 +192,7 @@ void clear_info2(info_t *);
 void set_info2(info_t *, char **);
 void free_info2(info_t *, int);
 
-/* env.c module */
+/* env2.c module */
 char *_getenv2(info_t *, const char *);
 int _myenv2(info_t *);
 int _mysetenv2(info_t *);

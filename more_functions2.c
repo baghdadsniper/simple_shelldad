@@ -37,11 +37,11 @@ int _erratoi2(char *s)
  */
 void print_error2(info_t *info, char *estr)
 {
-	_eputs2(info->fname);
+	_eputs2(info->fname2);
 	_eputs2(": ");
-	print_d2(info->line_count, STDERR_FILENO);
+	print_d2(info->line_count2, STDERR_FILENO);
 	_eputs2(": ");
-	_eputs2(info->argv[0]);
+	_eputs2(info->argv2[0]);
 	_eputs2(": ");
 	_eputs2(estr);
 }
@@ -55,7 +55,7 @@ void print_error2(info_t *info, char *estr)
  */
 int print_d2(int input, int fd)
 {
-	int (*__putchar)(char) = _putchar;
+	int (*__putchar)(char) = _putchar2;
 	int i, count = 0;
 	unsigned int _abs_, current;
 

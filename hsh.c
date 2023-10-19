@@ -16,7 +16,7 @@ int hsh2(info_t *info, char **av)
 	{
 		clear_info2(info);
 		if (interactive2(info))
-			_puts("$ ");
+			_puts2("$ ");
 		_eputchar2(BUF_FLUSH);
 		r = get_input2(info);
 		if (r != -1)
@@ -27,18 +27,18 @@ int hsh2(info_t *info, char **av)
 				find_cmd2(info);
 		}
 		else if (interactive2(info))
-			_putchar('\n');
+			_putchar2('\n');
 		free_info2(info, 0);
 	}
 	write_history2(info);
 	free_info2(info, 1);
-	if (!interactive2(info) && info->status)
-		exit(info->status);
+	if (!interactive2(info) && info->status2)
+		exit(info->status2);
 	if (builtin_ret2 == -2)
 	{
-		if (info->err_num == -1)
-			exit(info->status);
-		exit(info->err_num);
+		if (info->err_num2 == -1)
+			exit(info->status2);
+		exit(info->err_num2);
 	}
 	return (builtin_ret2);
 }
@@ -57,19 +57,19 @@ int find_builtin2(info_t *info)
 	int i, built_in_ret = -1;
 	builtin_table builtintbl[] = {
 		{"exit", _myexit2},
-		{"env", _myenv2},
+		{"env2", _myenv2},
 		{"help", _myhelp2},
-		{"history", _myhistory2},
+		{"history2", _myhistory2},
 		{"setenv", _mysetenv2},
 		{"unsetenv", _myunsetenv2},
 		{"cd", _mycd2},
-		{"alias", _myalias2},
+		{"alias2", _myalias2},
 		{NULL, NULL}};
 
 	for (i = 0; builtintbl[i].type; i++)
-		if (_strcmp(info->argv[0], builtintbl[i].type) == 0)
+		if (_strcmp2(info->argv2[0], builtintbl[i].type) == 0)
 		{
-			info->line_count++;
+			info->line_count2++;
 			built_in_ret = builtintbl[i].func(info);
 			break;
 		}
@@ -77,41 +77,41 @@ int find_builtin2(info_t *info)
 }
 
 /**
- * find_cmd2 - finds a command in PATH
+ * find_cmd2 - finds a command in path2
  * @info: the parameter & return info struct
  *
  * Return: void
  */
 void find_cmd2(info_t *info)
 {
-	char *path = NULL;
+	char *path2 = NULL;
 	int i, k;
 
-	info->path = info->argv[0];
-	if (info->linecount_flag == 1)
+	info->path2 = info->argv2[0];
+	if (info->linecount_flag2 == 1)
 	{
-		info->line_count++;
-		info->linecount_flag = 0;
+		info->line_count2++;
+		info->linecount_flag2 = 0;
 	}
-	for (i = 0, k = 0; info->arg[i]; i++)
-		if (!is_delim2(info->arg[i], " \t\n"))
+	for (i = 0, k = 0; info->arg2[i]; i++)
+		if (!is_delim2(info->arg2[i], " \t\n"))
 			k++;
 	if (!k)
 		return;
 
-	path = find_path2(info, _getenv2(info, "PATH="), info->argv[0]);
-	if (path)
+	path2 = find_path2(info, _getenv2(info, "path2="), info->argv2[0]);
+	if (path2)
 	{
-		info->path = path;
+		info->path2 = path2;
 		fork_cmd2(info);
 	}
 	else
 	{
-		if ((interactive2(info) || _getenv2(info, "PATH=") || info->argv[0][0] == '/') && is_cmd2(info, info->argv[0]))
+		if ((interactive2(info) || _getenv2(info, "path2=") || info->argv2[0][0] == '/') && is_cmd2(info, info->argv2[0]))
 			fork_cmd2(info);
-		else if (*(info->arg) != '\n')
+		else if (*(info->arg2) != '\n')
 		{
-			info->status = 127;
+			info->status2 = 127;
 			print_error2(info, "not found\n");
 		}
 	}
@@ -136,7 +136,7 @@ void fork_cmd2(info_t *info)
 	}
 	if (child_pid == 0)
 	{
-		if (execve(info->path, info->argv, get_environ2(info)) == -1)
+		if (execve(info->path2, info->argv2, get_environ2(info)) == -1)
 		{
 			free_info2(info, 1);
 			if (errno == EACCES)
@@ -147,11 +147,11 @@ void fork_cmd2(info_t *info)
 	}
 	else
 	{
-		wait(&(info->status));
-		if (WIFEXITED(info->status))
+		wait(&(info->status2));
+		if (WIFEXITED(info->status2))
 		{
-			info->status = WEXITSTATUS(info->status);
-			if (info->status == 126)
+			info->status2 = WEXITSTATUS(info->status2);
+			if (info->status2 == 126)
 				print_error2(info, "Permission denied\n");
 		}
 	}

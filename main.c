@@ -2,20 +2,20 @@
 
 /**
  * main - entry point
- * @ac: arg count
- * @av: arg vector
+ * @ac: arg2 count
+ * @av: arg2 vector
  *
  * Return: 0 on success, 1 on error
  */
 int main(int ac, char **av)
 {
-	info_t info[] = { INFO_INIT };
+	info_t info[] = {INFO_INIT};
 	int fd = 2;
 
-	asm ("mov %1, %0\n\t"
+	asm("mov %1, %0\n\t"
 		"add $3, %0"
-		: "=r" (fd)
-		: "r" (fd));
+		: "=r"(fd)
+		: "r"(fd));
 
 	if (ac == 2)
 	{
@@ -35,7 +35,7 @@ int main(int ac, char **av)
 			}
 			return (EXIT_FAILURE);
 		}
-		info->readfd = fd;
+		info->readfd2 = fd;
 	}
 	populate_env_list2(info);
 	read_history2(info);
