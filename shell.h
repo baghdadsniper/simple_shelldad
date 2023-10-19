@@ -23,7 +23,7 @@
 #define CMD_AND		2
 #define CMD_CHAIN	3
 
-/* for convert_number() */
+/* for convert_number2() */
 #define CONVERT_LOWERCASE	1
 #define CONVERT_UNSIGNED	2
 
@@ -111,25 +111,25 @@ typedef struct builtin
 } builtin_table;
 
 
-/* hsh.c */
-int hsh(info_t *, char **);
-int find_builtin(info_t *);
-void find_cmd(info_t *);
-void fork_cmd(info_t *);
+/* hsh2.c */
+int hsh2(info_t *, char **);
+int find_builtin2(info_t *);
+void find_cmd2(info_t *);
+void fork_cmd2(info_t *);
 
 /* path.c */
-int is_cmd(info_t *, char *);
-char *dup_chars(char *, int, int);
-char *find_path(info_t *, char *, char *);
+int is_cmd2(info_t *, char *);
+char *dup_chars2(char *, int, int);
+char *find_path2(info_t *, char *, char *);
 
 /* loophsh.c */
 int loophsh(char **);
 
 /* err_string_functions.c */
-void _eputs(char *);
-int _eputchar(char);
-int _putfd(char c, int fd);
-int _putsfd(char *str, int fd);
+void _eputs2(char *);
+int _eputchar2(char);
+int _putfd2(char c, int fd);
+int _putsfd2(char *str, int fd);
 
 /* string_functions.c */
 int _strlen(char *);
@@ -153,83 +153,83 @@ char **strtow(char *, char *);
 char **strtow2(char *, char);
 
 /* memory_functions */
-char *_memset(char *, char, unsigned int);
-void ffree(char **);
-void *_realloc(void *, unsigned int, unsigned int);
+char *_memset2(char *, char, unsigned int);
+void ffree2(char **);
+void *_realloc2(void *, unsigned int, unsigned int);
 
 /* memory_functions2.c */
-int bfree(void **);
+int bfree2(void **);
 
 /* more_functions.c */
-int interactive(info_t *);
-int is_delim(char, char *);
-int _isalpha(int);
-int _atoi(char *);
+int interactive2(info_t *);
+int is_delim2(char, char *);
+int _isalpha2(int);
+int _atoi2(char *);
 
 /* more_functions2.c */
-int _erratoi(char *);
-void print_error(info_t *, char *);
-int print_d(int, int);
-char *convert_number(long int, int, int);
-void remove_comments(char *);
+int _erratoi2(char *);
+void print_error2(info_t *, char *);
+int print_d2(int, int);
+char *convert_number2(long int, int, int);
+void remove_comments2(char *);
 
 /* builtin_emulators.c */
-int _myexit(info_t *);
-int _mycd(info_t *);
-int _myhelp(info_t *);
+int _myexit2(info_t *);
+int _mycd2(info_t *);
+int _myhelp2(info_t *);
 
 /* builtin_emulators2.c */
-int _myhistory(info_t *);
-int _myalias(info_t *);
+int _myhistory2(info_t *);
+int _myalias2(info_t *);
 
 /* getline.c module */
-ssize_t get_input(info_t *);
-int _getline(info_t *, char **, size_t *);
-void sigintHandler(int);
+ssize_t get_input2(info_t *);
+int _getline2(info_t *, char **, size_t *);
+void sigintHandler2(int);
 
 /* info.c module */
-void clear_info(info_t *);
-void set_info(info_t *, char **);
-void free_info(info_t *, int);
+void clear_info2(info_t *);
+void set_info2(info_t *, char **);
+void free_info2(info_t *, int);
 
 /* env.c module */
-char *_getenv(info_t *, const char *);
-int _myenv(info_t *);
-int _mysetenv(info_t *);
-int _myunsetenv(info_t *);
-int populate_env_list(info_t *);
+char *_getenv2(info_t *, const char *);
+int _myenv2(info_t *);
+int _mysetenv2(info_t *);
+int _myunsetenv2(info_t *);
+int populate_env_list2(info_t *);
 
 /* env2.c module */
-char **get_environ(info_t *);
-int _unsetenv(info_t *, char *);
-int _setenv(info_t *, char *, char *);
+char **get_environ2(info_t *);
+int _unsetenv2(info_t *, char *);
+int _setenv2(info_t *, char *, char *);
 
 /* file_io_functions.c */
-char *get_history_file(info_t *info);
-int write_history(info_t *info);
-int read_history(info_t *info);
-int build_history_list(info_t *info, char *buf, int linecount);
-int renumber_history(info_t *info);
+char *get_history_file2(info_t *info);
+int write_history2(info_t *info);
+int read_history2(info_t *info);
+int build_history_list2(info_t *info, char *buf, int linecount);
+int renumber_history2(info_t *info);
 
 /* liststr.c module */
-list_t *add_node(list_t **, const char *, int);
-list_t *add_node_end(list_t **, const char *, int);
-size_t print_list_str(const list_t *);
-int delete_node_at_index(list_t **, unsigned int);
-void free_list(list_t **);
+list_t *add_node2(list_t **, const char *, int);
+list_t *add_node_end2(list_t **, const char *, int);
+size_t print_list_str2(const list_t *);
+int delete_node_at_index2(list_t **, unsigned int);
+void free_list2(list_t **);
 
 /* liststr2.c module */
-size_t list_len(const list_t *);
-char **list_to_strings(list_t *);
-size_t print_list(const list_t *);
-list_t *node_starts_with(list_t *, char *, char);
-ssize_t get_node_index(list_t *, list_t *);
+size_t list_len2(const list_t *);
+char **list_to_strings2(list_t *);
+size_t print_list2(const list_t *);
+list_t *node_starts_with2(list_t *, char *, char);
+ssize_t get_node_index2(list_t *, list_t *);
 
 /* chain.c */
-int is_chain(info_t *, char *, size_t *);
-void check_chain(info_t *, char *, size_t *, size_t, size_t);
-int replace_alias(info_t *);
-int replace_vars(info_t *);
-int replace_string(char **, char *);
+int is_chain2(info_t *, char *, size_t *);
+void check_chain2(info_t *, char *, size_t *, size_t, size_t);
+int replace_alias2(info_t *);
+int replace_vars2(info_t *);
+int replace_string2(char **, char *);
 
 #endif
