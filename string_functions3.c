@@ -65,8 +65,7 @@ char *_strncat2(char *dest, char *src, int n)
  */
 char *_strchr2(char *s, char c)
 {
-	do
-	{
+	do{
 		if (*s == c)
 			return (s);
 	} while (*s++ != '\0');
