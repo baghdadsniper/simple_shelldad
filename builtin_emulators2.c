@@ -14,9 +14,9 @@ int _myhistory2(info_t *info)
 }
 
 /**
- * unset_alias2 - sets alias2 to string
+ * unset_alias2 - sets alias to string
  * @info: parameter struct
- * @str: the string alias2
+ * @str: the string alias
  *
  * Return: Always 0 on success, 1 on error
  */
@@ -30,16 +30,16 @@ int unset_alias2(info_t *info, char *str)
 		return (1);
 	c = *p;
 	*p = 0;
-	ret = delete_node_at_index2(&(info->alias2),
-								get_node_index2(info->alias2, node_starts_with2(info->alias2, str, -1)));
+	ret = delete_node_at_index2(&(info->alias),
+								get_node_index2(info->alias, node_starts_with2(info->alias, str, -1)));
 	*p = c;
 	return (ret);
 }
 
 /**
- * set_alias2 - sets alias2 to string
+ * set_alias2 - sets alias to string
  * @info: parameter struct
- * @str: the string alias2
+ * @str: the string alias
  *
  * Return: Always 0 on success, 1 on error
  */
@@ -54,12 +54,12 @@ int set_alias2(info_t *info, char *str)
 		return (unset_alias2(info, str));
 
 	unset_alias2(info, str);
-	return (add_node_end2(&(info->alias2), str, 0) == NULL);
+	return (add_node_end2(&(info->alias), str, 0) == NULL);
 }
 
 /**
- * print_alias2 - prints an alias2 string
- * @node: the alias2 node
+ * print_alias2 - prints an alias string
+ * @node: the alias node
  *
  * Return: Always 0 on success, 1 on error
  */
@@ -81,7 +81,7 @@ int print_alias2(list_t *node)
 }
 
 /**
- * _myalias2 - mimics the alias2 builtin (man alias2)
+ * _myalias2 - mimics the alias builtin (man alias)
  * @info: Structure containing potential arguments. Used to maintain
  *          constant function prototype.
  *  Return: Always 0
@@ -94,7 +94,7 @@ int _myalias2(info_t *info)
 
 	if (info->argc2 == 1)
 	{
-		node = info->alias2;
+		node = info->alias;
 		while (node)
 		{
 			print_alias2(node);
@@ -108,7 +108,7 @@ int _myalias2(info_t *info)
 		if (p)
 			set_alias2(info, info->argv2[i]);
 		else
-			print_alias2(node_starts_with2(info->alias2, info->argv2[i], '='));
+			print_alias2(node_starts_with2(info->alias, info->argv2[i], '='));
 	}
 
 	return (0);

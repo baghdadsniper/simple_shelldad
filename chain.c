@@ -83,7 +83,7 @@ int replace_alias2(info_t *info)
 
 	for (i = 0; i < 10; i++)
 	{
-		node = node_starts_with2(info->alias2, info->argv2[0], '=');
+		node = node_starts_with2(info->alias, info->argv2[0], '=');
 		if (!node)
 			return (0);
 		free(info->argv2[0]);

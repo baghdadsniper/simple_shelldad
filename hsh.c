@@ -63,7 +63,7 @@ int find_builtin2(info_t *info)
 		{"setenv", _mysetenv},
 		{"unsetenv", _myunsetenv},
 		{"cd", _mycd2},
-		{"alias2", _myalias2},
+		{"alias", _myalias2},
 		{NULL, NULL}};
 
 	for (i = 0; builtintbl[i].type; i++)

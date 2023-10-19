@@ -63,7 +63,7 @@ typedef struct liststr
  *@env: linked list local copy of environ2
  *@environ2: custom modified copy of environ2 from LL env
  *@history2: the history2 node
- *@alias2: the alias2 node
+ *@alias: the alias node
  *@env_changed2: on if environ2 was changed
  *@status2: the return status2 of the last exec'd command
  *@cmd_buf2: address of pointer to cmd_buf2, on if chaining
@@ -83,7 +83,7 @@ typedef struct passinfo
 	char *fname2;
 	list_t *env;
 	list_t *history2;
-	list_t *alias2;
+	list_t *alias;
 	char **environ2;
 	int env_changed2;
 	int status2;

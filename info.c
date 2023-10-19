@@ -62,8 +62,8 @@ void free_info2(info_t *info, int all)
 			free_list2(&(info->env));
 		if (info->history2)
 			free_list2(&(info->history2));
-		if (info->alias2)
-			free_list2(&(info->alias2));
+		if (info->alias)
+			free_list2(&(info->alias));
 		ffree2(info->environ2);
 		info->environ2 = NULL;
 		bfree2((void **)info->cmd_buf2);
