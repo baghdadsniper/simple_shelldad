@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/pc1/Desktop/ssh/simple_shell",
-      "program": "c:/Users/pc1/Desktop/ssh/simple_shell/build/Debug/outDebug",
+      "cwd": "c:/Users/pc1/Documents/New folder/simple_shell",
+      "program": "c:/Users/pc1/Documents/New folder/simple_shell/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
