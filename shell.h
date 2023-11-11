@@ -102,11 +102,11 @@ r_var *add_rvar_node(r_var **head, int lvar, char *var, int lval);
 void free_rvar_list(r_var **head);
 
 /* a */
-char *_strcat(char *dest, const char *src);
-char *_strcpy(char *dest, char *src);
-int _strcmp(char *s1, char *s2);
-char *_strchr(char *s, char c);
-int _strspn(char *s, char *accept);
+char *_strdog(char *dest, const char *src);
+char *_strcopy(char *dest, char *src);
+int _strcomp(char *s1, char *s2);
+char *_strchar(char *s, char c);
+int _strspin(char *s, char *accept);
 
 /* ac */
 void _memcpy(void *newptr, const void *ptr, unsigned int size);

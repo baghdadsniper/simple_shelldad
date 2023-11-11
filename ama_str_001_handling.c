@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- * _strcat -
- * @dest: 
- * @src: 
- * Return: 
+ * _strdog -
+ * @dest:
+ * @src:
+ * Return:
  */
-char *_strcat(char *dest, const char *src)
+char *_strdog(char *dest, const char *src)
 {
 	int i;
 	int j;
@@ -24,12 +24,12 @@ char *_strcat(char *dest, const char *src)
 	return (dest);
 }
 /**
- * *_strcpy - 
- * @dest: 
+ * *_strcopy -
+ * @dest:
  * @src:
- * Return: 
+ * Return:
  */
-char *_strcpy(char *dest, char *src)
+char *_strcopy(char *dest, char *src)
 {
 	size_t a;
 
@@ -42,12 +42,12 @@ char *_strcpy(char *dest, char *src)
 	return (dest);
 }
 /**
- * _strcmp - 
- * @s1: 
+ * _strcomp -
+ * @s1:
  * @s2:
- * Return: 
+ * Return:
  */
-int _strcmp(char *s1, char *s2)
+int _strcomp(char *s1, char *s2)
 {
 	int i;
 
@@ -61,12 +61,12 @@ int _strcmp(char *s1, char *s2)
 	return (0);
 }
 /**
- * _strchr - 
- * @s: 
- * @c: 
- * Return: 
+ * _strchar -
+ * @s:
+ * @c:
+ * Return:
  */
-char *_strchr(char *s, char c)
+char *_strchar(char *s, char c)
 {
 	unsigned int i = 0;
 
@@ -78,12 +78,12 @@ char *_strchr(char *s, char c)
 	return ('\0');
 }
 /**
- * _strspn -
- * @s: 
- * @accept: 
- * Return: 
+ * _strspin -
+ * @s:
+ * @accept:
+ * Return:
  */
-int _strspn(char *s, char *accept)
+int _strspin(char *s, char *accept)
 {
 	int i, j, bool;
 

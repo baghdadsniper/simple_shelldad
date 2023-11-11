@@ -14,13 +14,13 @@ void cd_dot(data_shell *datash)
 	cp_pwd = _strdup(pwd);
 	set_env("OLDPWD", cp_pwd, datash);
 	dir = datash->args[1];
-	if (_strcmp(".", dir) == 0)
+	if (_strcomp(".", dir) == 0)
 	{
 		set_env("PWD", cp_pwd, datash);
 		free(cp_pwd);
 		return;
 	}
-	if (_strcmp("/", cp_pwd) == 0)
+	if (_strcomp("/", cp_pwd) == 0)
 	{
 		free(cp_pwd);
 		return;

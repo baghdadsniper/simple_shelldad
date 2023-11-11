@@ -29,7 +29,7 @@ void bring_line(char **lineptr, size_t *n, char *buffer, size_t j)
 	}
 	else
 	{
-		_strcpy(*lineptr, buffer);
+		_strcopy(*lineptr, buffer);
 		free(buffer);
 	}
 }

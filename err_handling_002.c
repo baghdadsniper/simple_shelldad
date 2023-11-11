@@ -24,13 +24,13 @@ char *error_env(data_shell *datash)
 		return (NULL);
 	}
 
-	_strcpy(error, datash->av[0]);
-	_strcat(error, ": ");
-	_strcat(error, ver_str);
-	_strcat(error, ": ");
-	_strcat(error, datash->args[0]);
-	_strcat(error, msg);
-	_strcat(error, "\0");
+	_strcopy(error, datash->av[0]);
+	_strdog(error, ": ");
+	_strdog(error, ver_str);
+	_strdog(error, ": ");
+	_strdog(error, datash->args[0]);
+	_strdog(error, msg);
+	_strdog(error, "\0");
 	free(ver_str);
 
 	return (error);
@@ -57,13 +57,13 @@ char *error_path_126(data_shell *datash)
 		free(ver_str);
 		return (NULL);
 	}
-	_strcpy(error, datash->av[0]);
-	_strcat(error, ": ");
-	_strcat(error, ver_str);
-	_strcat(error, ": ");
-	_strcat(error, datash->args[0]);
-	_strcat(error, ": Permission denied\n");
-	_strcat(error, "\0");
+	_strcopy(error, datash->av[0]);
+	_strdog(error, ": ");
+	_strdog(error, ver_str);
+	_strdog(error, ": ");
+	_strdog(error, datash->args[0]);
+	_strdog(error, ": Permission denied\n");
+	_strdog(error, "\0");
 	free(ver_str);
 	return (error);
 }

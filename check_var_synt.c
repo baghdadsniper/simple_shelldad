@@ -126,13 +126,13 @@ void print_syntax_error(data_shell *datash, char *input, int i, int bool)
 		free(counter);
 		return;
 	}
-	_strcpy(error, datash->av[0]);
-	_strcat(error, ": ");
-	_strcat(error, counter);
-	_strcat(error, msg2);
-	_strcat(error, msg);
-	_strcat(error, msg3);
-	_strcat(error, "\0");
+	_strcopy(error, datash->av[0]);
+	_strdog(error, ": ");
+	_strdog(error, counter);
+	_strdog(error, msg2);
+	_strdog(error, msg);
+	_strdog(error, msg3);
+	_strdog(error, "\0");
 
 	write(STDERR_FILENO, error, length);
 	free(error);

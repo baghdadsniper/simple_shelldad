@@ -14,9 +14,9 @@ int cd_shell(data_shell *datash)
 
 	if (dir != NULL)
 	{
-		ishome = _strcmp("$HOME", dir);
-		ishome2 = _strcmp("~", dir);
-		isddash = _strcmp("--", dir);
+		ishome = _strcomp("$HOME", dir);
+		ishome2 = _strcomp("~", dir);
+		isddash = _strcomp("--", dir);
 	}
 
 	if (dir == NULL || !ishome || !ishome2 || !isddash)
@@ -25,13 +25,13 @@ int cd_shell(data_shell *datash)
 		return (1);
 	}
 
-	if (_strcmp("-", dir) == 0)
+	if (_strcomp("-", dir) == 0)
 	{
 		cd_previous(datash);
 		return (1);
 	}
 
-	if (_strcmp(".", dir) == 0 || _strcmp("..", dir) == 0)
+	if (_strcomp(".", dir) == 0 || _strcomp("..", dir) == 0)
 	{
 		cd_dot(datash);
 		return (1);
