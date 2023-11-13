@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- * read_line - 
+ * read_lines -
  *
- * @i_eof: 
- * Return: 
+ * @i_eof:
+ * Return:
  */
-char *read_line(int *i_eof)
+char *read_lines(int *i_eof)
 {
 	char *input = NULL;
 	size_t bufsize = 0;

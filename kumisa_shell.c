@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- * exit_shell - 
+ * exit_shells -
  *
- * @datash: 
- * Return: 
+ * @datash:
+ * Return:
  */
-int exit_shell(data_shell *datash)
+int exit_shells(data_shell *datash)
 {
 	unsigned int ustatus;
 	int is_digit;
@@ -15,13 +15,13 @@ int exit_shell(data_shell *datash)
 
 	if (datash->args[1] != NULL)
 	{
-		ustatus = _atoi(datash->args[1]);
-		is_digit = _isdigit(datash->args[1]);
-		str_len = _strlen(datash->args[1]);
+		ustatus = _atois(datash->args[1]);
+		is_digit = _isdigital(datash->args[1]);
+		str_len = _strlenth(datash->args[1]);
 		big_number = ustatus > (unsigned int)INT_MAX;
 		if (!is_digit || str_len > 10 || big_number)
 		{
-			get_error(datash, 2);
+			get_errors(datash, 2);
 			datash->status = 2;
 			return (1);
 		}

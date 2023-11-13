@@ -1,11 +1,11 @@
 #include "shell.h"
 
 /**
- * free_data - 
- * @datash: 
- * Return: 
+ * free_datas -
+ * @datash:
+ * Return:
  */
-void free_data(data_shell *datash)
+void free_datas(data_shell *datash)
 {
 	unsigned int i;
 
@@ -19,12 +19,12 @@ void free_data(data_shell *datash)
 }
 
 /**
- * set_data - 
- * @datash: 
- * @av: 
- * Return: 
+ * set_datas -
+ * @datash:
+ * @av:
+ * Return:
  */
-void set_data(data_shell *datash, char **av)
+void set_datas(data_shell *datash, char **av)
 {
 	unsigned int i;
 
@@ -41,28 +41,28 @@ void set_data(data_shell *datash, char **av)
 
 	for (i = 0; environ[i]; i++)
 	{
-		datash->_environ[i] = _strdup(environ[i]);
+		datash->_environ[i] = _strdump(environ[i]);
 	}
 
 	datash->_environ[i] = NULL;
-	datash->pid = aux_itoa(getpid());
+	datash->pid = aux_itoas(getpid());
 }
 
 /**
- * main - 
- * @ac: 
- * @av: 
+ * main -
+ * @ac:
+ * @av:
  * Return:
  */
 int main(int ac, char **av)
 {
 	data_shell datash;
-	(void) ac;
+	(void)ac;
 
-	signal(SIGINT, get_sigint);
-	set_data(&datash, av);
-	shell_loop(&datash);
-	free_data(&datash);
+	signal(SIGINT, get_sigints);
+	set_datas(&datash, av);
+	shell_loops(&datash);
+	free_datas(&datash);
 	if (datash.status < 0)
 		return (255);
 	return (datash.status);

@@ -1,14 +1,14 @@
 #include "shell.h"
 
 /**
- * add_rvar_node - 
- * @head: 
- * @lvar: 
- * @val: 
- * @lval: 
- * Return: 
+ * add_var_node -
+ * @head:
+ * @lvar:
+ * @val:
+ * @lval:
+ * Return:
  */
-r_var *add_rvar_node(r_var **head, int lvar, char *val, int lval)
+r_var *add_var_node(r_var **head, int lvar, char *val, int lval)
 {
 	r_var *new, *temp;
 
@@ -38,11 +38,11 @@ r_var *add_rvar_node(r_var **head, int lvar, char *val, int lval)
 }
 
 /**
- * free_rvar_list - 
- * @head: 
- * Return: 
+ * free_var_list -
+ * @head:
+ * Return:
  */
-void free_rvar_list(r_var **head)
+void free_var_list(r_var **head)
 {
 	r_var *temp;
 	r_var *curr;

@@ -1,21 +1,20 @@
 #include "shell.h"
 
 /**
- * get_builtin - 
- * @cmd: 
- * Return: 
+ * get_builtins -
+ * @cmd:
+ * Return:
  */
-int (*get_builtin(char *cmd))(data_shell *)
+int (*get_builtins(char *cmd))(data_shell *)
 {
 	builtin_t builtin[] = {
-		{ "env", _env },
-		{ "exit", exit_shell },
-		{ "setenv", _setenv },
-		{ "unsetenv", _unsetenv },
-		{ "cd", cd_shell },
-		{ "help", get_help },
-		{ NULL, NULL }
-	};
+		{"env", _env},
+		{"exit", exit_shells},
+		{"setenv", _setenv},
+		{"unsetenv", _unsetenv},
+		{"cd", cd_shells},
+		{"help", get_helps},
+		{NULL, NULL}};
 	int i;
 
 	for (i = 0; builtin[i].name; i++)

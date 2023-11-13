@@ -1,13 +1,13 @@
 #include "shell.h"
 
 /**
- * check_env - 
- * @h: 
- * @in: 
- * @data: 
- * Return: 
+ * check_envs -
+ * @h:
+ * @in:
+ * @data:
+ * Return:
  */
-void check_env(r_var **h, char *in, data_shell *data)
+void check_envs(r_var **h, char *in, data_shell *data)
 {
 	int row, chr, j, lval;
 	char **_envr;
@@ -19,8 +19,8 @@ void check_env(r_var **h, char *in, data_shell *data)
 		{
 			if (_envr[row][chr] == '=')
 			{
-				lval = _strlen(_envr[row] + chr + 1);
-				add_rvar_node(h, j, _envr[row] + chr + 1, lval);
+				lval = _strlenth(_envr[row] + chr + 1);
+				add_var_node(h, j, _envr[row] + chr + 1, lval);
 				return;
 			}
 
@@ -37,44 +37,44 @@ void check_env(r_var **h, char *in, data_shell *data)
 			break;
 	}
 
-	add_rvar_node(h, j, NULL, 0);
+	add_var_node(h, j, NULL, 0);
 }
 
 /**
- * check_vars - 
+ * check_var -
  * @h:
- * @in: 
- * @st: 
- * @data: 
+ * @in:
+ * @st:
+ * @data:
  * Return:
  */
-int check_vars(r_var **h, char *in, char *st, data_shell *data)
+int check_var(r_var **h, char *in, char *st, data_shell *data)
 {
 	int i, lst, lpd;
 
-	lst = _strlen(st);
-	lpd = _strlen(data->pid);
+	lst = _strlenth(st);
+	lpd = _strlenth(data->pid);
 
 	for (i = 0; in[i]; i++)
 	{
 		if (in[i] == '$')
 		{
 			if (in[i + 1] == '?')
-				add_rvar_node(h, 2, st, lst), i++;
+				add_var_node(h, 2, st, lst), i++;
 			else if (in[i + 1] == '$')
-				add_rvar_node(h, 2, data->pid, lpd), i++;
+				add_var_node(h, 2, data->pid, lpd), i++;
 			else if (in[i + 1] == '\n')
-				add_rvar_node(h, 0, NULL, 0);
+				add_var_node(h, 0, NULL, 0);
 			else if (in[i + 1] == '\0')
-				add_rvar_node(h, 0, NULL, 0);
+				add_var_node(h, 0, NULL, 0);
 			else if (in[i + 1] == ' ')
-				add_rvar_node(h, 0, NULL, 0);
+				add_var_node(h, 0, NULL, 0);
 			else if (in[i + 1] == '\t')
-				add_rvar_node(h, 0, NULL, 0);
+				add_var_node(h, 0, NULL, 0);
 			else if (in[i + 1] == ';')
-				add_rvar_node(h, 0, NULL, 0);
+				add_var_node(h, 0, NULL, 0);
 			else
-				check_env(h, in + i, data);
+				check_envs(h, in + i, data);
 		}
 	}
 
@@ -82,15 +82,15 @@ int check_vars(r_var **h, char *in, char *st, data_shell *data)
 }
 
 /**
- * replaced_input - 
+ * replace_input -
  *
  * @head:
- * @input: 
- * @new_input: 
- * @nlen: 
- * Return: 
+ * @input:
+ * @new_input:
+ * @nlen:
+ * Return:
  */
-char *replaced_input(r_var **head, char *input, char *new_input, int nlen)
+char *replace_input(r_var **head, char *input, char *new_input, int nlen)
 {
 	r_var *indx;
 	int i, j, k;
@@ -134,22 +134,22 @@ char *replaced_input(r_var **head, char *input, char *new_input, int nlen)
 }
 
 /**
- * rep_var - 
+ * rep_vars -
  *
- * @input: 
- * @datash: 
- * Return: 
+ * @input:
+ * @datash:
+ * Return:
  */
-char *rep_var(char *input, data_shell *datash)
+char *rep_vars(char *input, data_shell *datash)
 {
 	r_var *head, *indx;
 	char *status, *new_input;
 	int olen, nlen;
 
-	status = aux_itoa(datash->status);
+	status = aux_itoas(datash->status);
 	head = NULL;
 
-	olen = check_vars(&head, input, status, datash);
+	olen = check_var(&head, input, status, datash);
 
 	if (head == NULL)
 	{
@@ -171,11 +171,11 @@ char *rep_var(char *input, data_shell *datash)
 	new_input = malloc(sizeof(char) * (nlen + 1));
 	new_input[nlen] = '\0';
 
-	new_input = replaced_input(&head, input, new_input, nlen);
+	new_input = replace_input(&head, input, new_input, nlen);
 
 	free(input);
 	free(status);
-	free_rvar_list(&head);
+	free_var_list(&head);
 
 	return (new_input);
 }

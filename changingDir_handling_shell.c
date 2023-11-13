@@ -1,11 +1,11 @@
 #include "shell.h"
 
 /**
- * cd_shell - 
- * @datash: 
- * Return: 
+ * cd_shells -
+ * @datash:
+ * Return:
  */
-int cd_shell(data_shell *datash)
+int cd_shells(data_shell *datash)
 {
 	char *dir;
 	int ishome, ishome2, isddash;
@@ -21,23 +21,23 @@ int cd_shell(data_shell *datash)
 
 	if (dir == NULL || !ishome || !ishome2 || !isddash)
 	{
-		cd_to_home(datash);
+		cd_tos_home(datash);
 		return (1);
 	}
 
 	if (_strcomp("-", dir) == 0)
 	{
-		cd_previous(datash);
+		cd_previouse(datash);
 		return (1);
 	}
 
 	if (_strcomp(".", dir) == 0 || _strcomp("..", dir) == 0)
 	{
-		cd_dot(datash);
+		cd_dots(datash);
 		return (1);
 	}
 
-	cd_to(datash);
+	cd_tos(datash);
 
 	return (1);
 }

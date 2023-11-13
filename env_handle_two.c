@@ -12,8 +12,8 @@ char *copy_info(char *name, char *value)
 	char *new;
 	int len_name, len_value, len;
 
-	len_name = _strlen(name);
-	len_value = _strlen(value);
+	len_name = _strlenth(name);
+	len_value = _strlenth(value);
 	len = len_name + len_value + 2;
 	new = malloc(sizeof(char) * (len));
 	_strcopy(new, name);
@@ -39,8 +39,8 @@ void set_env(char *name, char *value, data_shell *datash)
 
 	for (i = 0; datash->_environ[i]; i++)
 	{
-		var_env = _strdup(datash->_environ[i]);
-		name_env = _strtok(var_env, "=");
+		var_env = _strdump(datash->_environ[i]);
+		name_env = _strlok(var_env, "=");
 		if (_strcomp(name_env, name) == 0)
 		{
 			free(datash->_environ[i]);
@@ -51,7 +51,7 @@ void set_env(char *name, char *value, data_shell *datash)
 		free(var_env);
 	}
 
-	datash->_environ = _reallocdp(datash->_environ, i, sizeof(char *) * (i + 2));
+	datash->_environ = _reallocsdps(datash->_environ, i, sizeof(char *) * (i + 2));
 	datash->_environ[i] = copy_info(name, value);
 	datash->_environ[i + 1] = NULL;
 }
@@ -67,7 +67,7 @@ int _setenv(data_shell *datash)
 
 	if (datash->args[1] == NULL || datash->args[2] == NULL)
 	{
-		get_error(datash, -1);
+		get_errors(datash, -1);
 		return (1);
 	}
 
@@ -91,14 +91,14 @@ int _unsetenv(data_shell *datash)
 
 	if (datash->args[1] == NULL)
 	{
-		get_error(datash, -1);
+		get_errors(datash, -1);
 		return (1);
 	}
 	k = -1;
 	for (i = 0; datash->_environ[i]; i++)
 	{
-		var_env = _strdup(datash->_environ[i]);
-		name_env = _strtok(var_env, "=");
+		var_env = _strdump(datash->_environ[i]);
+		name_env = _strlok(var_env, "=");
 		if (_strcomp(name_env, datash->args[1]) == 0)
 		{
 			k = i;
@@ -107,7 +107,7 @@ int _unsetenv(data_shell *datash)
 	}
 	if (k == -1)
 	{
-		get_error(datash, -1);
+		get_errors(datash, -1);
 		return (1);
 	}
 	realloc_environ = malloc(sizeof(char *) * (i));

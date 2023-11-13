@@ -1,11 +1,11 @@
 #include "shell.h"
 
 /**
- * without_comment - 
- * @in: 
- * Return: 
+ * without_comments -
+ * @in:
+ * Return:
  */
-char *without_comment(char *in)
+char *without_comments(char *in)
 {
 	int i, up_to;
 
@@ -26,7 +26,7 @@ char *without_comment(char *in)
 
 	if (up_to != 0)
 	{
-		in = _realloc(in, i, up_to + 1);
+		in = _reallocs(in, i, up_to + 1);
 		in[up_to] = '\0';
 	}
 
@@ -34,12 +34,12 @@ char *without_comment(char *in)
 }
 
 /**
- * shell_loop - 
- * @datash: 
+ * shell_loops -
+ * @datash:
  *
- * Return: 
+ * Return:
  */
-void shell_loop(data_shell *datash)
+void shell_loops(data_shell *datash)
 {
 	int loop, i_eof;
 	char *input;
@@ -48,21 +48,21 @@ void shell_loop(data_shell *datash)
 	while (loop == 1)
 	{
 		write(STDIN_FILENO, "^-^ ", 4);
-		input = read_line(&i_eof);
+		input = read_lines(&i_eof);
 		if (i_eof != -1)
 		{
-			input = without_comment(input);
+			input = without_comments(input);
 			if (input == NULL)
 				continue;
 
-			if (check_syntax_error(datash, input) == 1)
+			if (check_syntax_errors(datash, input) == 1)
 			{
 				datash->status = 2;
 				free(input);
 				continue;
 			}
-			input = rep_var(input, datash);
-			loop = split_commands(datash, input);
+			input = rep_vars(input, datash);
+			loop = split_commandos(datash, input);
 			datash->counter += 1;
 			free(input);
 		}

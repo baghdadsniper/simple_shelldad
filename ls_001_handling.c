@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- * add_sep_node_end -  
- * @head: 
+ * add_sep_node_ends -
+ * @head:
  * @sep:  ; | &
- * Return: 
+ * Return:
  */
-sep_list *add_sep_node_end(sep_list **head, char sep)
+sep_list *add_sep_node_ends(sep_list **head, char sep)
 {
 	sep_list *new, *temp;
 
@@ -33,11 +33,11 @@ sep_list *add_sep_node_end(sep_list **head, char sep)
 }
 
 /**
- * free_sep_list - 
- * @head: 
- * Return: 
+ * free_sep_lists -
+ * @head:
+ * Return:
  */
-void free_sep_list(sep_list **head)
+void free_sep_lists(sep_list **head)
 {
 	sep_list *temp;
 	sep_list *curr;
@@ -55,12 +55,12 @@ void free_sep_list(sep_list **head)
 }
 
 /**
- * add_line_node_end - 
- * @head: 
- * @line: 
- * Return: 
+ * add_line_node_ends -
+ * @head:
+ * @line:
+ * Return:
  */
-line_list *add_line_node_end(line_list **head, char *line)
+line_list *add_line_node_ends(line_list **head, char *line)
 {
 	line_list *new, *temp;
 
@@ -87,11 +87,11 @@ line_list *add_line_node_end(line_list **head, char *line)
 }
 
 /**
- * free_line_list - 
- * @head: 
- * Return: 
+ * free_line_lists -
+ * @head:
+ * Return:
  */
-void free_line_list(line_list **head)
+void free_line_lists(line_list **head)
 {
 	line_list *temp;
 	line_list *curr;

@@ -1,25 +1,25 @@
 #include "shell.h"
 
 /**
- * repeated_char - 
- * @input: 
- * @i: 
- * Return: 
+ * repeated_chars -
+ * @input:
+ * @i:
+ * Return:
  */
-int repeated_char(char *input, int i)
+int repeated_chars(char *input, int i)
 {
 	if (*(input - 1) == *input)
-		return (repeated_char(input - 1, i + 1));
+		return (repeated_chars(input - 1, i + 1));
 
 	return (i);
 }
 
 /**
- * error_sep_op - 
- * @input: 
- * @i: 
- * @last: 
- * Return: 
+ * error_sep_op -
+ * @input:
+ * @i:
+ * @last:
+ * Return:
  */
 int error_sep_op(char *input, int i, char last)
 {
@@ -43,7 +43,7 @@ int error_sep_op(char *input, int i, char last)
 
 		if (last == '|')
 		{
-			count = repeated_char(input, 0);
+			count = repeated_chars(input, 0);
 			if (count == 0 || count > 1)
 				return (i);
 		}
@@ -56,7 +56,7 @@ int error_sep_op(char *input, int i, char last)
 
 		if (last == '&')
 		{
-			count = repeated_char(input, 0);
+			count = repeated_chars(input, 0);
 			if (count == 0 || count > 1)
 				return (i);
 		}
@@ -66,12 +66,12 @@ int error_sep_op(char *input, int i, char last)
 }
 
 /**
- * first_char - 
- * @input: 
+ * first_chars -
+ * @input:
  * @i:
- * Return: 
+ * Return:
  */
-int first_char(char *input, int *i)
+int first_chars(char *input, int *i)
 {
 	for (*i = 0; input[*i]; *i += 1)
 	{
@@ -88,14 +88,14 @@ int first_char(char *input, int *i)
 }
 
 /**
- * print_syntax_error - 
- * @datash: 
- * @input: 
- * @i: 
- * @bool: 
- * Return: 
+ * print_syntax_errors -
+ * @datash:
+ * @input:
+ * @i:
+ * @bool:
+ * Return:
  */
-void print_syntax_error(data_shell *datash, char *input, int i, int bool)
+void print_syntax_errors(data_shell *datash, char *input, int i, int bool)
 {
 	char *msg, *msg2, *msg3, *error, *counter;
 	int length;
@@ -116,9 +116,9 @@ void print_syntax_error(data_shell *datash, char *input, int i, int bool)
 
 	msg2 = ": Syntax error: \"";
 	msg3 = "\"unexpected\n";
-	counter = aux_itoa(datash->counter);
-	length = _strlen(datash->av[0]) + _strlen(counter);
-	length += _strlen(msg) + _strlen(msg2) + _strlen(msg3) + 2;
+	counter = aux_itoas(datash->counter);
+	length = _strlenth(datash->av[0]) + _strlenth(counter);
+	length += _strlenth(msg) + _strlenth(msg2) + _strlenth(msg3) + 2;
 
 	error = malloc(sizeof(char) * (length + 1));
 	if (error == 0)
@@ -140,28 +140,28 @@ void print_syntax_error(data_shell *datash, char *input, int i, int bool)
 }
 
 /**
- * check_syntax_error - 
- * @datash: 
- * @input: 
- * Return: 
+ * check_syntax_errors -
+ * @datash:
+ * @input:
+ * Return:
  */
-int check_syntax_error(data_shell *datash, char *input)
+int check_syntax_errors(data_shell *datash, char *input)
 {
 	int begin = 0;
 	int f_char = 0;
 	int i = 0;
 
-	f_char = first_char(input, &begin);
+	f_char = first_chars(input, &begin);
 	if (f_char == -1)
 	{
-		print_syntax_error(datash, input, begin, 0);
+		print_syntax_errors(datash, input, begin, 0);
 		return (1);
 	}
 
 	i = error_sep_op(input + begin, 0, *(input + begin));
 	if (i != 0)
 	{
-		print_syntax_error(datash, input, begin + i, 1);
+		print_syntax_errors(datash, input, begin + i, 1);
 		return (1);
 	}
 

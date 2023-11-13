@@ -1,10 +1,10 @@
 #include "shell.h"
 
 /**
- * get_sigint - 
- * @sig: 
+ * get_sigints -
+ * @sig:
  */
-void get_sigint(int sig)
+void get_sigints(int sig)
 {
 	(void)sig;
 	write(STDOUT_FILENO, "\n^-^ ", 5);

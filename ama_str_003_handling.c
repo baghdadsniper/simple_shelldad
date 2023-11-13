@@ -1,11 +1,11 @@
 #include "shell.h"
 
 /**
- * rev_string - 
- * @s: 
- * Return: 
+ * rev_strings -
+ * @s:
+ * Return:
  */
-void rev_string(char *s)
+void rev_strings(char *s)
 {
 	int count = 0, i, j;
 	char *str, temp;

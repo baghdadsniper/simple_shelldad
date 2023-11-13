@@ -1,14 +1,14 @@
 #include "shell.h"
 
 /**
- * _memcpy - 
- * @newptr: 
- * @ptr: 
- * @size: 
+ * _memcpys -
+ * @newptr:
+ * @ptr:
+ * @size:
  *
- * Return: 
+ * Return:
  */
-void _memcpy(void *newptr, const void *ptr, unsigned int size)
+void _memcpys(void *newptr, const void *ptr, unsigned int size)
 {
 	char *char_ptr = (char *)ptr;
 	char *char_newptr = (char *)newptr;
@@ -19,14 +19,14 @@ void _memcpy(void *newptr, const void *ptr, unsigned int size)
 }
 
 /**
- * _realloc - 
- * @ptr: 
- * @old_size: 
- * @new_size: 
+ * _reallocs -
+ * @ptr:
+ * @old_size:
+ * @new_size:
  *
- * Return: 
+ * Return:
  */
-void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
+void *_reallocs(void *ptr, unsigned int old_size, unsigned int new_size)
 {
 	void *newptr;
 
@@ -47,23 +47,23 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 		return (NULL);
 
 	if (new_size < old_size)
-		_memcpy(newptr, ptr, new_size);
+		_memcpys(newptr, ptr, new_size);
 	else
-		_memcpy(newptr, ptr, old_size);
+		_memcpys(newptr, ptr, old_size);
 
 	free(ptr);
 	return (newptr);
 }
 
 /**
- * _reallocdp - 
+ * _reallocsdps -
  * @ptr:
- * @old_size: 
- * @new_size: 
+ * @old_size:
+ * @new_size:
  *
- * Return: 
+ * Return:
  */
-char **_reallocdp(char **ptr, unsigned int old_size, unsigned int new_size)
+char **_reallocsdps(char **ptr, unsigned int old_size, unsigned int new_size)
 {
 	char **newptr;
 	unsigned int i;

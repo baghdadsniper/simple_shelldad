@@ -1,18 +1,18 @@
 #include "shell.h"
 
 /**
- * bring_line - 
- * @lineptr: 
- * @buffer: 
- * @n: 
- * @j: 
+ * bring_lines -
+ * @lineptr:
+ * @buffer:
+ * @n:
+ * @j:
  */
-void bring_line(char **lineptr, size_t *n, char *buffer, size_t j)
+void bring_lines(char **lineptr, size_t *n, char *buffer, size_t j)
 {
 
 	if (*lineptr == NULL)
 	{
-		if  (j > BUFSIZE)
+		if (j > BUFSIZE)
 			*n = j;
 
 		else
@@ -34,13 +34,13 @@ void bring_line(char **lineptr, size_t *n, char *buffer, size_t j)
 	}
 }
 /**
- * get_line - 
- * @lineptr: 
- * @n: 
- * @stream: 
- * Return: 
+ * get_lines -
+ * @lineptr:
+ * @n:
+ * @stream:
+ * Return:
  */
-ssize_t get_line(char **lineptr, size_t *n, FILE *stream)
+ssize_t get_lines(char **lineptr, size_t *n, FILE *stream)
 {
 	int i;
 	static ssize_t input;
@@ -71,12 +71,12 @@ ssize_t get_line(char **lineptr, size_t *n, FILE *stream)
 			break;
 		}
 		if (input >= BUFSIZE)
-			buffer = _realloc(buffer, input, input + 1);
+			buffer = _reallocs(buffer, input, input + 1);
 		buffer[input] = t;
 		input++;
 	}
 	buffer[input] = '\0';
-	bring_line(lineptr, n, buffer, input);
+	bring_lines(lineptr, n, buffer, input);
 	retval = input;
 	if (i != 0)
 		input = 0;

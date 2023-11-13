@@ -1,11 +1,11 @@
 #include "shell.h"
 
 /**
- * get_len - 
- * @n: 
- * Return: 
+ * get_lens -
+ * @n:
+ * Return:
  */
-int get_len(int n)
+int get_lens(int n)
 {
 	unsigned int n1;
 	int lenght = 1;
@@ -28,14 +28,14 @@ int get_len(int n)
 	return (lenght);
 }
 /**
- * aux_itoa - 
- * @n: 
- * Return: 
+ * aux_itoas -
+ * @n:
+ * Return:
  */
-char *aux_itoa(int n)
+char *aux_itoas(int n)
 {
 	unsigned int n1;
-	int lenght = get_len(n);
+	int lenght = get_lens(n);
 	char *buffer;
 
 	buffer = malloc(sizeof(char) * (lenght + 1));
@@ -55,22 +55,21 @@ char *aux_itoa(int n)
 	}
 
 	lenght--;
-	do {
+	do
+	{
 		*(buffer + lenght) = (n1 % 10) + '0';
 		n1 = n1 / 10;
 		lenght--;
-	}
-	while (n1 > 0)
-		;
+	} while (n1 > 0);
 	return (buffer);
 }
 
 /**
- * _atoi - 
- * @s: 
+ * _atois -
+ * @s:
  * Return: .
  */
-int _atoi(char *s)
+int _atois(char *s)
 {
 	unsigned int count = 0, size = 0, oi = 0, pn = 1, m = 1, i;
 

@@ -1,29 +1,29 @@
 #include "shell.h"
 
 /**
- * _strdup - 
- * @s: 
- * Return: 
+ * _strdump -
+ * @s:
+ * Return:
  */
-char *_strdup(const char *s)
+char *_strdump(const char *s)
 {
 	char *new;
 	size_t len;
 
-	len = _strlen(s);
+	len = _strlenth(s);
 	new = malloc(sizeof(char) * (len + 1));
 	if (new == NULL)
 		return (NULL);
-	_memcpy(new, s, len + 1);
+	_memcpys(new, s, len + 1);
 	return (new);
 }
 
 /**
- * _strlen - 
- * @s: 
- * Return: 
+ * _strlenth -
+ * @s:
+ * Return:
  */
-int _strlen(const char *s)
+int _strlenth(const char *s)
 {
 	int len;
 
@@ -34,13 +34,13 @@ int _strlen(const char *s)
 }
 
 /**
- * cmp_chars - 
- * @str: 
- * @delim: 
+ * cmp_cars -
+ * @str:
+ * @delim:
  *
- * Return: 
+ * Return:
  */
-int cmp_chars(char str[], const char *delim)
+int cmp_cars(char str[], const char *delim)
 {
 	unsigned int i, j, k;
 
@@ -61,13 +61,13 @@ int cmp_chars(char str[], const char *delim)
 }
 
 /**
- * _strtok - 
- * @str: 
- * @delim: 
+ * _strlok -
+ * @str:
+ * @delim:
  *
- * Return: 
+ * Return:
  */
-char *_strtok(char str[], const char *delim)
+char *_strlok(char str[], const char *delim)
 {
 	static char *splitted, *str_end;
 	char *str_start;
@@ -75,23 +75,23 @@ char *_strtok(char str[], const char *delim)
 
 	if (str != NULL)
 	{
-		if (cmp_chars(str, delim))
+		if (cmp_cars(str, delim))
 			return (NULL);
-		splitted = str; 
-		i = _strlen(str);
-		str_end = &str[i]; 
+		splitted = str;
+		i = _strlenth(str);
+		str_end = &str[i];
 	}
 	str_start = splitted;
-	if (str_start == str_end) 
+	if (str_start == str_end)
 		return (NULL);
 
 	for (bool = 0; *splitted; splitted++)
 	{
-		
+
 		if (splitted != str_start)
 			if (*splitted && *(splitted - 1) == '\0')
 				break;
-		
+
 		for (i = 0; delim[i]; i++)
 		{
 			if (*splitted == delim[i])
@@ -102,21 +102,21 @@ char *_strtok(char str[], const char *delim)
 				break;
 			}
 		}
-		if (bool == 0 && *splitted) 
+		if (bool == 0 && *splitted)
 			bool = 1;
 	}
-	if (bool == 0) 
+	if (bool == 0)
 		return (NULL);
 	return (str_start);
 }
 
 /**
- * _isdigit - 
+ * _isdigital -
  *
- * @s: 
- * Return: 
+ * @s:
+ * Return:
  */
-int _isdigit(const char *s)
+int _isdigital(const char *s)
 {
 	unsigned int i;
 
