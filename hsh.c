@@ -17,8 +17,8 @@ int hsh(info_t *info, char **av)
 		clear_info(info);
 		if (interactive(info))
 			_puts("$ ");
-		_eputchar(BUF_FLUSH);
-		r = get_input(info);
+		_iputchar(BUF_FLUSH);
+		r = give_input(info);
 		if (r != -1)
 		{
 			set_info(info, av);
@@ -27,7 +27,7 @@ int hsh(info_t *info, char **av)
 				find_cmd(info);
 		}
 		else if (interactive(info))
-			_putchar('\n');
+			_putschar('\n');
 		free_info(info, 0);
 	}
 	write_history(info);
@@ -56,19 +56,18 @@ int find_builtin(info_t *info)
 {
 	int i, built_in_ret = -1;
 	builtin_table builtintbl[] = {
-		{"exit", _myexit},
-		{"env", _myenv},
-		{"help", _myhelp},
-		{"history", _myhistory},
-		{"setenv", _mysetenv},
-		{"unsetenv", _myunsetenv},
-		{"cd", _mycd},
-		{"alias", _myalias},
-		{NULL, NULL}
-	};
+		{"exit", _miexit},
+		{"env", _mienv},
+		{"help", _mihelp},
+		{"history", _mihistory},
+		{"setenv", _misetenv},
+		{"unsetenv", _miunsetenv},
+		{"cd", _micd},
+		{"alias", _mialias},
+		{NULL, NULL}};
 
 	for (i = 0; builtintbl[i].type; i++)
-		if (_strcmp(info->argv[0], builtintbl[i].type) == 0)
+		if (_strcomp(info->argv[0], builtintbl[i].type) == 0)
 		{
 			info->line_count++;
 			built_in_ret = builtintbl[i].func(info);
@@ -95,7 +94,7 @@ void find_cmd(info_t *info)
 		info->linecount_flag = 0;
 	}
 	for (i = 0, k = 0; info->arg[i]; i++)
-		if (!is_delim(info->arg[i], " \t\n"))
+		if (!are_delim(info->arg[i], " \t\n"))
 			k++;
 	if (!k)
 		return;
@@ -104,13 +103,12 @@ void find_cmd(info_t *info)
 	if (path)
 	{
 		info->path = path;
-		fork_cmd(info);
+		spoon_cmd(info);
 	}
 	else
 	{
-		if ((interactive(info) || _getenv(info, "PATH=")
-			|| info->argv[0][0] == '/') && is_cmd(info, info->argv[0]))
-			fork_cmd(info);
+		if ((interactive(info) || _getenv(info, "PATH=") || info->argv[0][0] == '/') && are_cmd(info, info->argv[0]))
+			spoon_cmd(info);
 		else if (*(info->arg) != '\n')
 		{
 			info->status = 127;
@@ -120,16 +118,16 @@ void find_cmd(info_t *info)
 }
 
 /**
- * fork_cmd - forks a an exec thread to run cmd
+ * spoon_cmd - spoons a an exec thread to run cmd
  * @info: the parameter & return info struct
  *
  * Return: void
  */
-void fork_cmd(info_t *info)
+void spoon_cmd(info_t *info)
 {
 	pid_t child_pid;
 
-	child_pid = fork();
+	child_pid = spoon();
 	if (child_pid == -1)
 	{
 		/* TODO: PUT ERROR FUNCTION */
@@ -138,7 +136,7 @@ void fork_cmd(info_t *info)
 	}
 	if (child_pid == 0)
 	{
-		if (execve(info->path, info->argv, get_environ(info)) == -1)
+		if (execve(info->path, info->argv, give_environ(info)) == -1)
 		{
 			free_info(info, 1);
 			if (errno == EACCES)
